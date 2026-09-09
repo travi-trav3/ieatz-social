@@ -68,6 +68,18 @@ async function main() {
     if (!L.isPinterest(config, post)) continue;
     const id = L.field(config, post, 'id');
     if (opt.only && id !== opt.only) continue;
+    // Merge the saved content object first (keeping this run's eligibility
+    // verdict), so every state check below reads the real page_status.
+    if (!(post.page && post.page.recipes && post.page.recipes.length)) {
+      const savedFile = generator.contentPath(id);
+      if (fs.existsSync(savedFile)) {
+        const saved = U.readJson(savedFile);
+        const elig = post.page_status && post.page_status.eligibility;
+        Object.assign(post, saved);
+        post.page_status = Object.assign({}, saved.page_status || {}, elig ? { eligibility: elig } : {});
+        if (!post.cta || !post.cta.arm) post.cta = Object.assign({}, saved.cta || {}, post.cta || {});
+      }
+    }
     const ps = post.page_status;
     if (!ps || !ps.eligibility.eligible || (post.cta && post.cta.arm !== 'lp')) continue;
     if (ps.state === 'live') { log(`${id}: already live at ${ps.url}, skipping`); continue; }
@@ -80,7 +92,7 @@ async function main() {
       let obj = post;
       if (!(post.page && post.page.recipes && post.page.recipes.length)) {
         const file = generator.contentPath(id);
-        if (fs.existsSync(file)) Object.assign(post, U.readJson(file));
+        if (fs.existsSync(file)) { /* merged above */ }
         else {
           const g = await generator.generate(post, ctx);
           if (g.status === 'awaiting_session') { entry.state = 'awaiting_session'; ps.state = 'planned'; report.needsTravis.push(`${id}: content not written yet. Prompt at ${g.promptPath}; write ${g.contentPath} and rerun.`); continue; }

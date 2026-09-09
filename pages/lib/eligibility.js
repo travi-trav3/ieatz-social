@@ -34,7 +34,9 @@ function scorePost(post, ctx) {
   if (NON_SEARCH_PILLARS.test(pillar) && !query) return fail('pillar', `pillar "${pillar}" with no search query behind it`);
   if (!query) return fail('no_query', 'query_target is empty');
 
+  const ownId = L.field(config, post, 'id');
   for (const p of corpus.pages || []) {
+    if (p.id === ownId) continue; // a rerun of the same concept is not a duplicate of itself
     const sim = U.cosine(U.tokenize(query), U.tokenize(p.query));
     if (sim > config.eligibility.existingPageSimilarity) {
       out.existing_page = p.url;
