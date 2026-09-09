@@ -21,32 +21,52 @@
   },
   "pages": {
     "weeklyCap": 3,
-    "requireReview": true,
+    "requireReview": false,
     "reviewPagesBeforeDirectPush": 5,
     "reviewBranchPrefix": "pages/",
     "defaultSectionOrder": "advertorial",
-    "recipesPerRoundup": { "min": 3, "max": 5 },
+    "recipesPerRoundup": {
+      "min": 3,
+      "max": 5
+    },
     "supportingSections": 2,
     "faqPairs": 3,
-    "internalLinks": { "min": 2, "max": 4, "bootstrapUntilCorpusSize": 3 },
-    "proseWords": { "min": 400, "max": 700 },
+    "internalLinks": {
+      "min": 2,
+      "max": 4,
+      "bootstrapUntilCorpusSize": 3
+    },
+    "proseWords": {
+      "min": 400,
+      "max": 700
+    },
     "htmlMaxBytes": 153600,
-    "relatedBackfillLimit": 2
+    "relatedBackfillLimit": 2,
+    "_requireReview_note": "Turned off 2026-09-09 by Travis after page one's PR (#2) was merged: pages push straight to main from here. Live verification runs in the website repo's verify-recipes GitHub Action (commit status recipes/verify-live/<slug>) as well as in lib/verify-live.js."
   },
   "splitTest": {
     "enabled": true,
-    "arms": ["lp", "direct"],
+    "arms": [
+      "lp",
+      "direct"
+    ],
     "readAtClicksPerArm": 300
   },
   "eligibility": {
     "threshold": 60,
     "existingPageSimilarity": 0.85,
     "recipeJaccard": 0.7,
-    "pinterestChannels": ["pinterest"]
+    "pinterestChannels": [
+      "pinterest"
+    ]
   },
   "images": {
     "heroReuseDays": 30,
-    "providerChain": ["library", "generated", "none"],
+    "providerChain": [
+      "library",
+      "generated",
+      "none"
+    ],
     "library": {
       "indexFile": "photo-library.json"
     },
@@ -56,17 +76,43 @@
       "apiKeyEnv": "IMAGE_PROVIDER_API_KEY",
       "endpoint": "",
       "model": "",
-      "sizes": { "hero": [1500, 1000], "recipe": [1000, 1500] },
+      "sizes": {
+        "hero": [
+          1500,
+          1000
+        ],
+        "recipe": [
+          1000,
+          1500
+        ]
+      },
       "promptTemplate": "Overhead or three-quarter angle food photograph, natural window light, {dish}, made exactly from: {ingredients}. Real home kitchen, no hands, no faces, no text, no logos, no branded props, no restaurant plating.",
-      "qualityCheck": { "minWidth": 1000, "minHeight": 1000 },
+      "qualityCheck": {
+        "minWidth": 1000,
+        "minHeight": 1000
+      },
       "costPerImageUsd": 0
     }
   },
   "cta": {
-    "pageCtaCopy": ["Get all five recipes", "Full recipes on the site", "See the whole list", "Recipes and swaps inside"],
-    "storeCtaCopy": ["Get the app free", "Cook from what you already have", "Start with what's in your kitchen", "See what you can make tonight"]
+    "pageCtaCopy": [
+      "Get all five recipes",
+      "Full recipes on the site",
+      "See the whole list",
+      "Recipes and swaps inside"
+    ],
+    "storeCtaCopy": [
+      "Get the app free",
+      "Cook from what you already have",
+      "Start with what's in your kitchen",
+      "See what you can make tonight"
+    ]
   },
-  "verifyLive": { "intervalSeconds": 30, "timeoutMinutes": 20 },
+  "verifyLive": {
+    "intervalSeconds": 30,
+    "timeoutMinutes": 20,
+    "githubStatusContext": "recipes/verify-live/"
+  },
   "generator": {
     "mode": "session",
     "model": "claude-opus-5",
@@ -74,7 +120,13 @@
     "maxTokens": 32000
   },
   "validate": {
-    "allowedScriptHosts": ["fonts.googleapis.com", "fonts.gstatic.com", "connect.facebook.net", "s.pinimg.com", "www.googletagmanager.com"],
+    "allowedScriptHosts": [
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
+      "connect.facebook.net",
+      "s.pinimg.com",
+      "www.googletagmanager.com"
+    ],
     "factsWarnDays": 90,
     "factsFailDays": 180
   },

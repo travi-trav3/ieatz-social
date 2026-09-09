@@ -211,7 +211,8 @@ function validateObject(obj, ctx) {
   }
 
   // Provenance line matches the review gate.
-  if (!config.pages.requireReview && /edited by a person/i.test(page.provenance_line)) err('provenance', 'provenance line claims human editing while pages.requireReview is false');
+  const reviewed = obj.page_status && obj.page_status.reviewed_by_person;
+  if (!config.pages.requireReview && !reviewed && /edited by a person/i.test(page.provenance_line)) err('provenance', 'provenance line claims human editing while pages.requireReview is false (set page_status.reviewed_by_person only for a page a person actually reviewed)');
 
   // Utility self-check recorded by the generator.
   if (mode === 'production') {

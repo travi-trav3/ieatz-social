@@ -67,9 +67,12 @@
     "deploy": {
       "pr": {
         "url": "https://github.com/travi-trav3/iEatz/pull/2",
-        "via": "session"
+        "via": "session",
+        "merged": "2026-09-09",
+        "merge_commit": "4dd1988"
       }
-    }
+    },
+    "reviewed_by_person": true
   },
   "cta": {
     "arm": "lp",
@@ -102,7 +105,7 @@
     "breadcrumb_label": "10-minute breakfasts for busy mornings",
     "h1": "What can I make for breakfast in 10 minutes?",
     "hero": {
-      "eyebrow": "Breakfast · 10 minutes · 20g+ protein",
+      "eyebrow": "Breakfast \u00b7 10 minutes \u00b7 20g+ protein",
       "opener": [
         "It is 7:12. The alarm has gone off twice, a permission slip needs signing, and the only thing in the fridge you can identify with any confidence is half a carton of eggs.",
         "You have ten minutes. You will spend eight of them standing in the cold light of the open door, deciding. Which is how breakfast turns into coffee and whatever was in the bag by the door."

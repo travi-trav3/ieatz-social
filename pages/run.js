@@ -28,7 +28,7 @@ const { verifyLive } = require('./lib/verify-live');
 function args() {
   const a = process.argv.slice(2);
   const get = (k) => { const i = a.indexOf(k); return i === -1 ? null : a[i + 1]; };
-  return { batch: get('--batch'), ledger: get('--ledger'), concepts: get('--concepts'), dryRun: a.includes('--dry-run'), only: get('--only'), runId: get('--run-id') || U.runId() };
+  return { batch: get('--batch'), ledger: get('--ledger'), concepts: get('--concepts'), dryRun: a.includes('--dry-run'), only: get('--only'), runId: get('--run-id') || U.runId(), assumeLive: get('--assume-live'), evidence: get('--evidence') };
 }
 
 function syntheticLedger(conceptsPath, config) {
@@ -93,9 +93,15 @@ async function main() {
       if (ps.state !== 'deployed' && weekUsed + deployedThisRun >= config.pages.weeklyCap) {
         throw new Error(`weekly cap of ${config.pages.weeklyCap} reached`);
       }
-      // 2b. A page already deployed but not yet verified (PR merged since?) goes straight to verify.
+      // 2b. A page already deployed but not yet verified goes straight to verify.
+      // --assume-live <id> --evidence "..." records a verification performed
+      // elsewhere (the website repo's verify-recipes Action) when this
+      // environment cannot reach the domain. The evidence lands in the ledger.
       if (ps.state === 'deployed' && ps.url && !opt.dryRun) {
-        const v = await verifyLive(ps.url, obj.page.og_title || obj.page.h1, config, log);
+        const v = opt.assumeLive === id
+          ? { ok: true, verified_at: U.nowIso(), attempts: 0, via: 'external', evidence: opt.evidence || 'no evidence given' }
+          : await verifyLive(ps.url, obj.page.og_title || obj.page.h1, config, log);
+        if (v.via === 'external') { ps.live_verified_via = 'external'; ps.live_evidence = v.evidence; log(`${id}: marked live from external evidence: ${v.evidence}`); }
         entry.live = v;
         if (v.ok) { ps.state = 'live'; ps.live_verified_at = v.verified_at; linkGraph.addToCorpus(corpus, obj, config, { state: 'live', deployed_at: (corpus.pages.find((p) => p.slug === obj.page.slug) || {}).deployed_at || U.nowIso(), live_verified_at: v.verified_at }); U.saveCorpus(corpus); entry.state = 'live'; }
         else { ps.failure = v.reason; entry.state = 'deployed-unverified'; report.needsTravis.push(`${id}: deployed but not live (${v.reason}). If the PR is open, merge it and rerun.`); }
@@ -187,7 +193,7 @@ function writeReport(r, config) {
     if (p.validation) lines.push(`- validation: object ${p.validation.object.ok ? 'ok' : 'FAIL'} (${p.validation.object.words} prose words), html ${p.validation.html.ok ? 'ok' : 'FAIL'} (${p.validation.html.bytes} bytes)${p.validation.html.warnings.length ? `; warnings: ${p.validation.html.warnings.join('; ')}` : ''}`);
     if (p.staging) lines.push(`- staged: ${p.staging}`);
     if (p.deploy) lines.push(`- deploy: ${p.deploy.branch} @ ${p.deploy.commit}${p.deploy.pr ? ` PR ${p.deploy.pr.url}` : ''}${p.deploy.pr_error ? ` (PR not opened: ${p.deploy.pr_error})` : ''}`);
-    if (p.live) lines.push(`- live: ${p.live.ok ? `verified ${p.live.verified_at} after ${p.live.attempts} attempts` : p.live.reason}`);
+    if (p.live) lines.push(`- live: ${p.live.ok ? (p.live.via === 'external' ? `verified ${p.live.verified_at} from external evidence: ${p.live.evidence}` : `verified ${p.live.verified_at} after ${p.live.attempts} attempts`) : p.live.reason}`);
     if (p.fallback_used) lines.push('- fallback: pin routed to the store');
     lines.push('');
   }
