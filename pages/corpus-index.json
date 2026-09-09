@@ -23,7 +23,8 @@
       "state": "deployed",
       "deployed_at": "2026-09-09T05:19:31.560Z",
       "commit": "f12bae908d13f5b8afefcbd767ce6fbc5ffabf3c",
-      "pr": "https://github.com/travi-trav3/iEatz/pull/2"
+      "pr": "https://github.com/travi-trav3/iEatz/pull/2",
+      "merge_commit": "4dd1988"
     }
   ],
   "recipes": [

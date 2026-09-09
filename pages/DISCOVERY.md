@@ -13,6 +13,8 @@ Written 2026-09-09 on the first run of the pages build, from a remote Claude Cod
 5. **The golden reference violates two of the brief's own rules.** The example export contains four em dashes (the short answer, one ingredient, one method step, one footnote) and renders a Google Play badge while `play_store` is null. `golden/example.content.json` keeps both, because it is a fidelity fixture. The shipping copy of the same page (`content/10-minute-breakfasts-busy-mornings.json`) drops them and passes the validator. Fix both in the design on the next export so the two files converge.
 6. **The stale App Store URL is real.** `index.html` links `apps.apple.com/us/app/ai-recipe-generator-by-ieatz/id6475559706` in nine places (line 684 even carries a DEV note saying so). The current listing slug is `fridge-to-table-ai-recipes`. The pages use the `id6475559706` form. `index.html` is not touched by this build; it is a separate, one-line-per-link change for Travis to approve.
 
+7. **GitHub Actions is disabled on the website repo.** `.github/workflows/verify-recipes.yml` is on `main` (ed7e7a8) but the API lists zero workflows and `workflow_dispatch` returns 404. Until Actions is enabled in the repo settings, no machine in this environment can confirm a page is live, and pins for new pages stay Buffer drafts. Enabling it is a one-time setting; after that the Action runs on every push to `main` that touches `recipes/`.
+
 ## `ieatz-social` (this repo)
 
 | Item | Found |

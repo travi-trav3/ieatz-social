@@ -72,7 +72,12 @@
         "merge_commit": "4dd1988"
       }
     },
-    "reviewed_by_person": true
+    "reviewed_by_person": true,
+    "live_verification": {
+      "status": "pending",
+      "blocker": "GitHub Actions is disabled on travi-trav3/iEatz, so the verify-recipes workflow cannot run; this sandbox cannot reach ieatzhealthy.com directly",
+      "next": "enable Actions, dispatch verify-recipes.yml with slugs=10-minute-breakfasts-busy-mornings, then run.js --assume-live with the commit status as evidence"
+    }
   },
   "cta": {
     "arm": "lp",
@@ -389,5 +394,20 @@
       }
     },
     "provenance_line": "Recipes on this page are developed with the iEatz recipe engine and edited by a person before publishing. Times, servings and protein figures are tested against the written method."
+  },
+  "pin": {
+    "buffer_post_id": "6aa1bb9ff88b2a75ef099692",
+    "status": "draft",
+    "channel_id": "6a7a4b64b2d9d577435279f6",
+    "board": "High protein meals and macro friendly recipes",
+    "board_service_id": "1011339728762228748",
+    "dueAt": "2026-09-18T07:40:00-07:00",
+    "image": "https://raw.githubusercontent.com/travi-trav3/ieatz-social/680d50291e2205298c3f68e4b4623571cd730977/posts/pages/10min-breakfasts-busy-mornings.png",
+    "image_http": 200,
+    "destination": "https://ieatzhealthy.com/recipes/10-minute-breakfasts-busy-mornings/?utm_source=pinterest&utm_medium=organic&utm_campaign=ingredient-idea&utm_content=10min-breakfasts-busy-mornings",
+    "cta_copy": "Get all five recipes",
+    "title": "5 high-protein breakfasts you can make in 10 minutes",
+    "slack_alert": null,
+    "rule": "stays a draft until page_status.state is live; then edit_post saveToDraft:false and schedule the Slack alert in #all-ieatz-healthy (C08U1PJ03U7) at dueAt"
   }
 }

@@ -32,7 +32,17 @@ What one run does, in order, per Pinterest post:
 5. **Wire** the destination into the ledger's Buffer fields. A page URL is written only when `state` is `live`; anything else falls back to the store. The existing scheduling step then creates the pin from the ledger exactly as before.
 6. **Report** `pages/runs/<run-id>.md`. Commit it with the ledger.
 
-## When requireReview is on (first 5 pages)
+## The pin
+
+The existing render harness produces the pin creative when it is available. When it is not (a remote session), `lib/pin/render-pin.js` renders the 1000x1500 creative from the page's headline and hero photo with the self-hosted brand fonts; commit it under `posts/pages/<id>.png`, pin the raw.githubusercontent URL to the commit SHA, and curl it for 200 before scheduling. Buffer: `create_post` on the Pinterest channel with `metadata.pinterest = {boardServiceId, title, url}`, `mode: customScheduled`, `dueAt` 7 or more days out, then the Slack alert in #all-ieatz-healthy at `dueAt`.
+
+**A pin whose page has not returned 200 to a machine is created as a Buffer draft** (`saveToDraft: true`) with everything else filled in, and flipped with `edit_post saveToDraft:false` once `page_status.state` is `live`. Record `pin.buffer_post_id` and `pin.status` on the ledger record.
+
+## Live verification without direct network
+
+The website repo carries `.github/workflows/verify-recipes.yml`, which polls each pushed page and records a commit status `recipes/verify-live/<slug>`. A run that cannot reach the domain reads that status and records it with `run.js --assume-live <id> --evidence "<status text>"`. GitHub Actions must be enabled on the website repo for this to work (DISCOVERY.md item 7).
+
+## When requireReview is on (off since 2026-09-09; here for when it is turned back on)
 
 The run stops at `deployed (PR open)` and lists the PR under "Needs Travis". Merge it, wait for Cloudflare, then rerun the same command: the page goes `deployed → live`, the corpus updates, and the pin gets wired. Do not schedule the pin in between; the router will have routed it to the store until the page is verified.
 
