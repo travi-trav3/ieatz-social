@@ -1,0 +1,21 @@
+{
+  "name": "ieatz-pages",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Autonomous Pinterest landing pages for ieatzhealthy.com/recipes/",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node test/run-tests.js",
+    "golden": "node test/golden.js",
+    "golden:update": "node test/golden.js --update"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "pixelmatch": "^7.1.0",
+    "playwright-core": "^1.58.0",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.34.3"
+  }
+}

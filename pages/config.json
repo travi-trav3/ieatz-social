@@ -1,0 +1,110 @@
+{
+  "_about": "Caps, arms, providers, review gate. Secrets never live here: they come from the environment (see env keys below).",
+  "site": {
+    "origin": "https://ieatzhealthy.com",
+    "name": "iEatz Healthy",
+    "recipes_path": "/recipes/",
+    "trailing_slash": true,
+    "favicon": "/favicon.svg",
+    "app_store_badge": "/assets/app-store-badge.png",
+    "default_og_image": "/assets/photos/couple-cooking.jpg",
+    "website_repo": {
+      "path": "../../iEatz",
+      "remote": "https://github.com/travi-trav3/iEatz",
+      "production_branch": "main",
+      "deploy": "cloudflare-pages-git",
+      "index_html": "index.html",
+      "photos_dir": "assets/photos",
+      "recipe_photos_dir": "assets/photos/recipes",
+      "sitemap": "sitemap.xml"
+    }
+  },
+  "pages": {
+    "weeklyCap": 3,
+    "requireReview": true,
+    "reviewPagesBeforeDirectPush": 5,
+    "reviewBranchPrefix": "pages/",
+    "defaultSectionOrder": "advertorial",
+    "recipesPerRoundup": { "min": 3, "max": 5 },
+    "supportingSections": 2,
+    "faqPairs": 3,
+    "internalLinks": { "min": 2, "max": 4, "bootstrapUntilCorpusSize": 3 },
+    "proseWords": { "min": 400, "max": 700 },
+    "htmlMaxBytes": 153600,
+    "relatedBackfillLimit": 2
+  },
+  "splitTest": {
+    "enabled": true,
+    "arms": ["lp", "direct"],
+    "readAtClicksPerArm": 300
+  },
+  "eligibility": {
+    "threshold": 60,
+    "existingPageSimilarity": 0.85,
+    "recipeJaccard": 0.7,
+    "pinterestChannels": ["pinterest"]
+  },
+  "images": {
+    "heroReuseDays": 30,
+    "providerChain": ["library", "generated", "none"],
+    "library": {
+      "indexFile": "photo-library.json"
+    },
+    "generated": {
+      "enabled": false,
+      "provider": "none",
+      "apiKeyEnv": "IMAGE_PROVIDER_API_KEY",
+      "endpoint": "",
+      "model": "",
+      "sizes": { "hero": [1500, 1000], "recipe": [1000, 1500] },
+      "promptTemplate": "Overhead or three-quarter angle food photograph, natural window light, {dish}, made exactly from: {ingredients}. Real home kitchen, no hands, no faces, no text, no logos, no branded props, no restaurant plating.",
+      "qualityCheck": { "minWidth": 1000, "minHeight": 1000 },
+      "costPerImageUsd": 0
+    }
+  },
+  "cta": {
+    "pageCtaCopy": ["Get all five recipes", "Full recipes on the site", "See the whole list", "Recipes and swaps inside"],
+    "storeCtaCopy": ["Get the app free", "Cook from what you already have", "Start with what's in your kitchen", "See what you can make tonight"]
+  },
+  "verifyLive": { "intervalSeconds": 30, "timeoutMinutes": 20 },
+  "generator": {
+    "mode": "session",
+    "model": "claude-opus-5",
+    "effort": "high",
+    "maxTokens": 32000
+  },
+  "validate": {
+    "allowedScriptHosts": ["fonts.googleapis.com", "fonts.gstatic.com", "connect.facebook.net", "s.pinimg.com", "www.googletagmanager.com"],
+    "factsWarnDays": 90,
+    "factsFailDays": 180
+  },
+  "ledger": {
+    "_about": "Field mapping onto the existing batch ledger. Adjust here, never in code, once DISCOVERY confirms the real field names.",
+    "batchDir": "../content",
+    "batchFilePattern": "batch-{NN}/ledger.json",
+    "postsField": "posts",
+    "fields": {
+      "id": "id",
+      "channel": "channel",
+      "pillar": "pillar",
+      "topic": "topic",
+      "title": "title",
+      "text": "text",
+      "query_target": "query_target",
+      "niche": "niche",
+      "cta": "cta",
+      "dueAt": "dueAt",
+      "status": "status",
+      "bufferId": "bufferId",
+      "pinterestUrl": "pinterest.url",
+      "pinterestTitle": "pinterest.title",
+      "heroPhoto": "heroPhoto"
+    }
+  },
+  "env": {
+    "APPLE_PROVIDER_TOKEN": "App Store Connect campaign provider token (pt). Not in the repo.",
+    "ANTHROPIC_API_KEY": "Only for generator.mode = api. Session mode needs no key.",
+    "IMAGE_PROVIDER_API_KEY": "Only when images.generated.enabled is true.",
+    "CLOUDFLARE_API_TOKEN": "Only if deploy switches to wrangler direct upload. Git-connected Pages needs nothing."
+  }
+}

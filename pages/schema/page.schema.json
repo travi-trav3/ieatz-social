@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ieatzhealthy.com/schema/page.schema.json",
+  "title": "Pinterest landing page content object",
+  "description": "Extends the pipeline's content JSON with a `page` layer, `cta` routing and `page_status`. Every unique value on a page is a field here. Proof values are keys into verified-facts.json, never literals.",
+  "type": "object",
+  "required": ["id", "pillar", "query_target", "niche", "page", "cta", "page_status"],
+  "additionalProperties": true,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$" },
+    "pillar": { "type": "string", "minLength": 1 },
+    "query_target": { "type": "string", "minLength": 8 },
+    "channel": { "type": "string" },
+    "niche": {
+      "type": "object",
+      "required": ["inventory", "constraint", "outcome"],
+      "properties": {
+        "inventory": { "type": "string" },
+        "constraint": { "type": "string" },
+        "outcome": { "type": "string" }
+      }
+    },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "page": { "$ref": "#/$defs/page" },
+    "cta": { "$ref": "#/$defs/cta" },
+    "page_status": { "$ref": "#/$defs/page_status" }
+  },
+  "$defs": {
+    "image": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["src", "alt", "source"],
+          "properties": {
+            "src": { "type": "string", "minLength": 1 },
+            "alt": { "type": "string" },
+            "pin_description": { "type": "string" },
+            "source": { "type": "string", "enum": ["library", "generated", "manual", "none"] },
+            "library_id": { "type": "string" },
+            "cost_usd": { "type": "number" }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "page": {
+      "type": "object",
+      "required": ["create", "type", "slug", "sectionOrder", "title_tag", "meta_description", "h1", "hero", "bridge", "recipes", "list_headline", "interstitials", "supporting_sections", "faq", "internal_links", "final_cta", "provenance_line"],
+      "additionalProperties": true,
+      "properties": {
+        "create": { "type": "boolean" },
+        "type": { "type": "string", "enum": ["roundup"] },
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 80 },
+        "sectionOrder": { "type": "string", "enum": ["advertorial", "utility"] },
+        "accent": { "type": "string", "enum": ["green", "forest", "deep"], "default": "green" },
+        "showPlayStore": { "type": "boolean" },
+        "suppress_rich_pin": { "type": "boolean" },
+        "category": { "type": "string" },
+        "title_tag": { "type": "string", "minLength": 20, "maxLength": 70 },
+        "meta_description": { "type": "string", "minLength": 60, "maxLength": 165 },
+        "schema_description": { "type": "string" },
+        "og_title": { "type": "string", "maxLength": 90 },
+        "og_description": { "type": "string", "maxLength": 200 },
+        "og_image": { "type": ["string", "null"] },
+        "breadcrumb_label": { "type": "string", "maxLength": 70 },
+        "h1": { "type": "string", "minLength": 12, "maxLength": 90 },
+        "hero": {
+          "type": "object",
+          "required": ["eyebrow", "opener", "pain_line", "direct_answer", "image"],
+          "properties": {
+            "eyebrow": { "type": "string", "minLength": 3, "maxLength": 70 },
+            "opener": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "string", "minLength": 40 } },
+            "pain_line": { "type": "string", "minLength": 10, "maxLength": 120 },
+            "time_stamp": { "type": ["string", "null"], "maxLength": 12 },
+            "direct_answer": { "type": "string", "minLength": 80, "maxLength": 520 },
+            "image": { "$ref": "#/$defs/image" },
+            "inset_image": { "$ref": "#/$defs/image" }
+          }
+        },
+        "bridge": {
+          "type": "object",
+          "required": ["headline", "body", "app_screens", "proof"],
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 90 },
+            "body": { "type": "string", "minLength": 60, "maxLength": 420 },
+            "beats": {
+              "type": "array",
+              "maxItems": 3,
+              "items": { "type": "object", "required": ["title", "detail"], "properties": { "title": { "type": "string" }, "detail": { "type": "string" } } }
+            },
+            "app_screens": { "type": "array", "maxItems": 2, "items": { "type": "string" } },
+            "lifestyle_image": { "$ref": "#/$defs/image" },
+            "proof": {
+              "type": "object",
+              "properties": {
+                "rating_key": { "type": ["string", "null"] },
+                "review_key": { "type": ["string", "null"] },
+                "stat_key": { "type": ["string", "null"] }
+              }
+            }
+          }
+        },
+        "jump_list": { "type": "boolean" },
+        "list_headline": { "type": "string", "minLength": 10, "maxLength": 90 },
+        "recipes": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["anchor", "name", "description", "time_minutes", "servings", "protein_g", "image", "ingredients", "steps", "why_it_works", "alt", "pin_description"],
+            "properties": {
+              "anchor": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+              "name": { "type": "string", "minLength": 6, "maxLength": 80 },
+              "description": { "type": "string", "minLength": 20, "maxLength": 160 },
+              "body": { "type": "string" },
+              "time_minutes": { "type": "integer", "minimum": 1, "maximum": 180 },
+              "servings": { "type": "integer", "minimum": 1, "maximum": 12 },
+              "protein_g": { "type": "integer", "minimum": 0, "maximum": 120 },
+              "category": { "type": "string" },
+              "image": { "$ref": "#/$defs/image" },
+              "schema_image": { "type": ["string", "null"] },
+              "alt": { "type": "string", "minLength": 10 },
+              "pin_description": { "type": "string", "minLength": 20 },
+              "primary_protein": { "type": "string" },
+              "method": { "type": "string" },
+              "ingredients": { "type": "array", "minItems": 3, "maxItems": 14, "items": { "type": "string", "minLength": 2 } },
+              "steps": { "type": "array", "minItems": 2, "maxItems": 8, "items": { "type": "string", "minLength": 12 } },
+              "why_it_works": { "type": "string", "minLength": 30, "maxLength": 260 }
+            }
+          }
+        },
+        "interstitials": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["style"],
+            "properties": {
+              "style": { "type": "string", "enum": ["photo_band", "dark_strip", "pull_quote", "stat"] },
+              "line": { "type": "string", "maxLength": 140 },
+              "image": { "$ref": "#/$defs/image" },
+              "quote_key": { "type": "string" },
+              "stat_key": { "type": "string" }
+            }
+          }
+        },
+        "cta_cadence": { "type": "array", "items": { "type": "string" } },
+        "supporting_sections": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["type", "eyebrow", "heading", "body"],
+            "properties": {
+              "type": { "type": "string", "enum": ["protein_math", "substitutions", "make_ahead", "serve_with", "common_mistakes", "storage", "nutrition_note", "buy_once", "scaling"] },
+              "eyebrow": { "type": "string", "maxLength": 40 },
+              "heading": { "type": "string", "minLength": 10, "maxLength": 90 },
+              "body": { "oneOf": [{ "type": "string", "minLength": 40 }, { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 20 } }] },
+              "rows": {
+                "type": ["array", "null"],
+                "items": { "type": "object", "required": ["label", "value", "note"], "properties": { "label": { "type": "string" }, "value": { "type": "string" }, "note": { "type": "string" } } }
+              },
+              "footnote": { "type": ["string", "null"] },
+              "images": { "type": "array", "maxItems": 2, "items": { "$ref": "#/$defs/image" } }
+            }
+          }
+        },
+        "faq": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "object", "required": ["q", "a"], "properties": { "q": { "type": "string", "minLength": 12, "maxLength": 120 }, "a": { "type": "string", "minLength": 40, "maxLength": 420 } } }
+        },
+        "internal_links": {
+          "type": "array",
+          "maxItems": 4,
+          "items": { "type": "object", "required": ["title", "url"], "properties": { "title": { "type": "string" }, "url": { "type": "string" }, "meta": { "type": "string" } } }
+        },
+        "final_cta": {
+          "type": "object",
+          "required": ["headline", "image"],
+          "properties": { "headline": { "type": "string", "minLength": 10, "maxLength": 90 }, "image": { "$ref": "#/$defs/image" } }
+        },
+        "provenance_line": { "type": "string", "minLength": 40 }
+      }
+    },
+    "cta": {
+      "type": "object",
+      "required": ["arm", "destination", "url", "campaign_token", "utm", "pin_cta_copy"],
+      "properties": {
+        "arm": { "type": ["string", "null"], "enum": ["lp", "direct", null] },
+        "destination": { "type": "string", "enum": ["page", "app_store", "cpp_pantry", "cpp_health", "cpp_grocery", "homepage"] },
+        "url": { "type": "string" },
+        "campaign_token": { "type": ["string", "null"] },
+        "utm": {
+          "type": "object",
+          "properties": {
+            "utm_source": { "type": "string" },
+            "utm_medium": { "type": "string" },
+            "utm_campaign": { "type": "string" },
+            "utm_content": { "type": "string" }
+          }
+        },
+        "pin_cta_copy": { "type": "string" }
+      }
+    },
+    "page_status": {
+      "type": "object",
+      "required": ["eligibility", "state"],
+      "properties": {
+        "eligibility": {
+          "type": "object",
+          "required": ["score", "eligible", "reasons"],
+          "properties": {
+            "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "eligible": { "type": "boolean" },
+            "reasons": { "type": "array", "items": { "type": "string" } },
+            "hard_exclude": { "type": ["string", "null"] }
+          }
+        },
+        "state": { "type": "string", "enum": ["planned", "generated", "rendered", "validated", "deployed", "live", "failed", "skipped"] },
+        "url": { "type": "string" },
+        "live_verified_at": { "type": "string" },
+        "failure": { "type": ["string", "null", "object"] },
+        "fallback_used": { "type": "boolean" },
+        "deploy": { "type": ["object", "null"] },
+        "images": { "type": ["object", "null"] }
+      }
+    }
+  }
+}

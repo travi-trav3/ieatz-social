@@ -1,0 +1,213 @@
+{
+  "_about": "Categorised index of the photos that exist in the website repo (assets/photos/). Tags drive the library provider in source-images.js. `confirmed` means a person (or the session) opened the file and agreed the tags describe what is in it; slugs lie, so an unconfirmed photo is never used as a recipe hero. `used` is appended by the run with {page, slot, date} so the 30-day hero reuse rule can be enforced across channels. Real photography for a page goes in assets/photos/recipes/<slug>/<slot>.jpg and overrides this index.",
+  "base_path": "/assets/photos/",
+  "photos": [
+    {
+      "id": "buddha-bowl",
+      "file": "buddha-bowl.jpg",
+      "w": 1400,
+      "h": 933,
+      "orientation": "landscape",
+      "kind": "food",
+      "tags": [
+        "bowl",
+        "grain bowl",
+        "vegetables",
+        "chickpeas",
+        "lunch",
+        "dinner",
+        "healthy"
+      ],
+      "confirmed": false,
+      "used": [],
+      "alt": "A grain bowl with chickpeas, greens and roasted vegetables"
+    },
+    {
+      "id": "cooking-window",
+      "file": "cooking-window.jpg",
+      "w": 1061,
+      "h": 1400,
+      "orientation": "portrait",
+      "kind": "food",
+      "tags": [
+        "eggs",
+        "scrambled eggs",
+        "breakfast",
+        "cooking",
+        "stove",
+        "kitchen",
+        "window light",
+        "hands",
+        "pan",
+        "morning"
+      ],
+      "confirmed": true,
+      "used": [
+        {
+          "page": "10-minute-breakfasts-busy-mornings",
+          "slot": "hero",
+          "date": "2026-09-09"
+        }
+      ],
+      "alt": "Scrambled eggs with tomato in a pan beside a bright kitchen window",
+      "also_kind": "lifestyle"
+    },
+    {
+      "id": "couple-cooking",
+      "file": "couple-cooking.jpg",
+      "w": 1400,
+      "h": 933,
+      "orientation": "landscape",
+      "kind": "lifestyle",
+      "tags": [
+        "people",
+        "kitchen",
+        "cooking together",
+        "evening"
+      ],
+      "confirmed": true,
+      "used": [
+        {
+          "page": "10-minute-breakfasts-busy-mornings",
+          "slot": "lifestyle",
+          "date": "2026-09-09"
+        }
+      ],
+      "alt": "Two people cooking together at the stove in a home kitchen"
+    },
+    {
+      "id": "cutting-board-veg",
+      "file": "cutting-board-veg.jpg",
+      "w": 1400,
+      "h": 1400,
+      "orientation": "square",
+      "kind": "ingredients",
+      "tags": [
+        "vegetables",
+        "cutting board",
+        "prep",
+        "knife",
+        "fresh"
+      ],
+      "confirmed": false,
+      "used": [],
+      "alt": "Fresh vegetables on a wooden cutting board"
+    },
+    {
+      "id": "fridge-organized",
+      "file": "fridge-organized.jpg",
+      "w": 1400,
+      "h": 973,
+      "orientation": "landscape",
+      "kind": "fridge",
+      "tags": [
+        "fridge",
+        "open fridge",
+        "stocked",
+        "organized",
+        "shelves"
+      ],
+      "confirmed": true,
+      "used": [
+        {
+          "page": "10-minute-breakfasts-busy-mornings",
+          "slot": "final",
+          "date": "2026-09-09"
+        }
+      ],
+      "alt": "An open fridge with stocked, organized shelves"
+    },
+    {
+      "id": "fridge-real-mess",
+      "file": "fridge-real-mess.jpg",
+      "w": 1000,
+      "h": 1400,
+      "orientation": "portrait",
+      "kind": "fridge",
+      "tags": [
+        "fridge",
+        "open fridge",
+        "mess",
+        "real",
+        "shelves",
+        "leftovers"
+      ],
+      "confirmed": true,
+      "used": [
+        {
+          "page": "10-minute-breakfasts-busy-mornings",
+          "slot": "inset",
+          "date": "2026-09-09"
+        }
+      ],
+      "alt": "A real, crowded fridge shelf"
+    },
+    {
+      "id": "pesto-pasta-bowl",
+      "file": "pesto-pasta-bowl.jpg",
+      "w": 1400,
+      "h": 934,
+      "orientation": "landscape",
+      "kind": "food",
+      "tags": [
+        "pasta",
+        "pesto",
+        "bowl",
+        "dinner",
+        "green"
+      ],
+      "confirmed": true,
+      "used": [],
+      "alt": "A bowl of pesto pasta with tomatoes and greens"
+    },
+    {
+      "id": "salmon",
+      "file": "salmon.jpg",
+      "w": 320,
+      "h": 480,
+      "orientation": "portrait",
+      "kind": "food",
+      "tags": [
+        "salmon",
+        "fish",
+        "dinner"
+      ],
+      "confirmed": false,
+      "reject": "320x480 is below the minimum source resolution; never use on a page",
+      "used": [],
+      "alt": "A salmon fillet"
+    },
+    {
+      "id": "spices-spoons",
+      "file": "spices-spoons.jpg",
+      "w": 933,
+      "h": 1400,
+      "orientation": "portrait",
+      "kind": "ingredients",
+      "tags": [
+        "spices",
+        "spoons",
+        "pantry",
+        "seasoning"
+      ],
+      "confirmed": false,
+      "used": [],
+      "alt": "Spices in spoons on a dark surface"
+    }
+  ],
+  "app_screens": [
+    "app-receipt.jpg",
+    "app-oatmeal.jpg",
+    "app-buddha-bowl.jpg",
+    "app-chicken.jpg",
+    "app-toast.jpg"
+  ],
+  "missing_from_readme": [
+    "meal-prep-spread.jpg",
+    "tacos.jpg",
+    "app-home.jpg",
+    "app-recipe.jpg",
+    "app-instacart.jpg"
+  ],
+  "_confirmed_note": "confirmed: true was set on 2026-09-09 after opening each file in the build session. cooking-window is scrambled eggs in a pan, so it counts as food photography for a breakfast page."
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "10min-breakfasts-busy-mornings",
+    "channel": "pinterest",
+    "pillar": "Ingredient Idea",
+    "title": "5 breakfasts you can make in 10 minutes on a busy morning",
+    "query_target": "what can I make for breakfast in 10 minutes",
+    "niche": { "inventory": "pantry staples", "constraint": "10 minutes, busy morning", "outcome": "breakfast" },
+    "tags": ["breakfast", "quick", "high-protein", "eggs", "oats", "yogurt", "beans", "banana", "cottage cheese"],
+    "dueAt": "2026-09-18T07:40:00-07:00",
+    "status": "pending"
+  }
+]

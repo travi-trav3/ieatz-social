@@ -1,0 +1,60 @@
+{
+  "_about": "The only source of factual claims a page may make. Populated from the live site (index.html) and the App Store on 2026-09-09. Travis maintains it. Any `verified` date older than 90 days makes the validator warn; older than 180 days fails.",
+  "app": {
+    "name": "Fridge to Table: AI Recipes",
+    "brand": "iEatz Healthy",
+    "apple_id": "6475559706",
+    "provider_token_env": "APPLE_PROVIDER_TOKEN",
+    "play_package": "com.ieatz.healthy"
+  },
+  "store_urls": {
+    "app_store": "https://apps.apple.com/us/app/id6475559706",
+    "app_store_listing_slug": "fridge-to-table-ai-recipes",
+    "cpp_pantry": null,
+    "cpp_health": null,
+    "cpp_grocery": null,
+    "cpp_unmapped": [
+      { "ppid": "f530a214-a854-48bc-8938-9863ab8df814", "url": "https://apps.apple.com/us/app/fridge-to-table-ai-recipes/id6475559706?ppid=f530a214-a854-48bc-8938-9863ab8df814", "cluster": null, "received": "2026-09-09" },
+      { "ppid": "01486809-dde2-4185-bd35-ead1e108a053", "url": "https://apps.apple.com/us/app/fridge-to-table-ai-recipes/id6475559706?ppid=01486809-dde2-4185-bd35-ead1e108a053", "cluster": null, "received": "2026-09-09" },
+      { "ppid": "73ef6a01-097d-4b28-b278-8e8691bc8660", "url": "https://apps.apple.com/us/app/fridge-to-table-ai-recipes/id6475559706?ppid=73ef6a01-097d-4b28-b278-8e8691bc8660", "cluster": null, "received": "2026-09-09" }
+    ],
+    "_cpp_note": "Three CPP links arrived from Travis on 2026-09-09 without cluster labels. Move each into cpp_pantry / cpp_health / cpp_grocery once he says which is which. The router degrades to app_store until then.",
+    "play_store": null
+  },
+  "campaign_tokens": { "lp": "pin-lp", "direct": "pin-direct" },
+  "proof": {
+    "app_store_rating": { "value": "5.0", "label": "App Store rating, iEatz Healthy", "verified": "2026-09-09", "source": "index.html proof section" },
+    "review_sixsocks": { "quote": "I haven't had any groceries go to waste the last couple of weeks", "author": "SixSocks, App Store review", "verified": "2026-09-09", "source": "index.html testimonial" },
+    "recipes_per_day": { "value": "300+", "label": "recipes generated daily", "verified": "2026-09-09", "source": "index.html proof stat" },
+    "waste_stat": { "value": "$1,500", "label": "of groceries thrown out per household, every year", "verified": "2026-09-09", "source": "index.html proof stat" }
+  },
+  "app_screens_allowlist": [
+    "https://ieatzhealthy.com/assets/photos/app-receipt.jpg",
+    "https://ieatzhealthy.com/assets/photos/app-oatmeal.jpg",
+    "https://ieatzhealthy.com/assets/photos/app-buddha-bowl.jpg",
+    "https://ieatzhealthy.com/assets/photos/app-chicken.jpg",
+    "https://ieatzhealthy.com/assets/photos/app-toast.jpg"
+  ],
+  "app_screen_alt": {
+    "app-receipt.jpg": "iEatz app screen: a grocery receipt being imported as ingredients",
+    "app-oatmeal.jpg": "iEatz app screen: an oatmeal recipe generated from named ingredients",
+    "app-buddha-bowl.jpg": "iEatz app screen: a buddha bowl recipe with calories and macros",
+    "app-chicken.jpg": "iEatz app screen: a chicken recipe with step by step instructions",
+    "app-toast.jpg": "iEatz app screen: a toast recipe generated from what was in the kitchen"
+  },
+  "features_claimable": ["receipt import", "photo of fridge", "calories and macros", "Instacart hand-off", "step by step instructions"],
+  "features_never_claim": ["aisle-sorted shopping list", "weekly planner", "in-app Instacart checkout", "goal selector", "weekly calorie tracker"],
+  "diets_supported": [],
+  "never_say": [],
+  "universal": {
+    "bridge_headline": "Everything below assumes you shopped for it.",
+    "bridge_beats": [
+      { "title": "Wednesday stops being a decision.", "detail": "You open the fridge, name three things, and the meal is already chosen. The deciding was the tiring part, not the cooking." },
+      { "title": "The half-bag of spinach gets eaten.", "detail": "Cooking from what is already there means the wilting thing becomes tonight, instead of becoming Sunday's bin." },
+      { "title": "You stop buying the same three things twice.", "detail": "When the kitchen is already accounted for, the store trip gets shorter. Nothing gets bought because you could not remember." }
+    ],
+    "provenance_line_reviewed": "Recipes on this page are developed with the iEatz recipe engine and edited by a person before publishing. Times, servings and protein figures are tested against the written method.",
+    "provenance_line_unreviewed": "Recipes on this page are developed with the iEatz recipe engine. Times, servings and protein figures are estimates checked against the written method."
+  },
+  "numbers_allowed_outside_recipes": ["5.0", "300+", "$1,500", "10", "15", "20", "30", "three", "five", "ten"]
+}

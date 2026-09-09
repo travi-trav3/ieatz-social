@@ -1,0 +1,199 @@
+{
+  "_about": "Hand-written from PinterestRoundup.example.html. This object, rendered with the golden site config, must reproduce the export. It is a fidelity fixture, not a shipping page: it keeps the export's em dashes and Play Store badge on purpose, and image slots the export left as design placeholders are null here.",
+  "id": "10min-breakfasts-busy-mornings",
+  "pillar": "Ingredient Idea",
+  "query_target": "what can I make for breakfast in 10 minutes",
+  "niche": { "inventory": "pantry staples", "constraint": "10 minutes, busy morning", "outcome": "breakfast" },
+  "tags": ["breakfast", "quick", "high-protein", "eggs", "oats", "yogurt", "beans", "banana"],
+  "page": {
+    "create": true,
+    "type": "roundup",
+    "slug": "10-minute-breakfasts-busy-mornings",
+    "sectionOrder": "advertorial",
+    "accent": "green",
+    "category": "Breakfast",
+    "title_tag": "10-minute high-protein breakfasts for busy mornings | iEatz Healthy",
+    "meta_description": "Five breakfasts you can make in ten minutes, each with 20g of protein or more, from things already in your kitchen. Full recipes, times and servings.",
+    "schema_description": "Five breakfasts you can make in ten minutes, each with 20g of protein or more, from things already in your kitchen.",
+    "og_title": "10-minute high-protein breakfasts for busy mornings",
+    "og_description": "Five breakfasts in ten minutes, 20g+ protein each, from what is already in your kitchen.",
+    "og_image": "/img/recipes/10-minute-breakfasts-hero.jpg",
+    "breadcrumb_label": "10-minute breakfasts for busy mornings",
+    "h1": "What can I make for breakfast in 10 minutes?",
+    "hero": {
+      "eyebrow": "Breakfast · 10 minutes · 20g+ protein",
+      "opener": [
+        "It is 7:12. The alarm has gone off twice, a permission slip needs signing, and the only thing in the fridge you can identify with any confidence is half a carton of eggs.",
+        "You have ten minutes. You will spend eight of them standing in the cold light of the open door, deciding. Which is how breakfast turns into coffee and whatever was in the bag by the door."
+      ],
+      "pain_line": "The deciding is the expensive part. Not the cooking.",
+      "time_stamp": "7:12 a.m.",
+      "direct_answer": "In ten minutes you can make whipped cottage cheese toast, savory oats with a jammy egg, a frozen-berry yogurt bowl, a black bean and egg skillet, or a peanut banana shake—each one 20 grams of protein or more, from things already in most kitchens. All five are written out in full further down, with times, servings and where the protein comes from.",
+      "image": { "src": "../assets/photos/food/food-07.jpg", "alt": "A small skillet of oats with blueberries and orange, straight from the stove", "pin_description": "", "source": "library" },
+      "inset_image": { "src": "../assets/photos/fridge/fridge-real-mess.jpg", "alt": "A real, crowded fridge shelf", "source": "library" }
+    },
+    "bridge": {
+      "headline": "Every recipe below assumes you shopped for it.",
+      "body": "All five are good. All five are *also a guess about your kitchen.* iEatz runs the other direction: it starts from ==what is actually in there this morning==, which is the one thing a page like this can never know.",
+      "beats": [],
+      "app_screens": ["app-receipt.jpg", "app-oatmeal.jpg"],
+      "lifestyle_image": { "src": "../assets/photos/lifestyle/cook-snap-1.png", "alt": "Someone checking their phone in a small kitchen while cooking", "source": "library" },
+      "proof": { "rating_key": "app_store_rating", "review_key": "review_sixsocks", "stat_key": "recipes_per_day" }
+    },
+    "jump_list": true,
+    "list_headline": "Five breakfasts, ten minutes, free and in full.",
+    "recipes": [
+      {
+        "anchor": "cottage-cheese-toast",
+        "name": "Whipped cottage cheese toast with chili crisp",
+        "description": "Cottage cheese whipped smooth on dark toast, with chili crisp and flaky salt.",
+        "time_minutes": 5,
+        "servings": 1,
+        "protein_g": 28,
+        "image": null,
+        "schema_image": "/img/recipes/whipped-cottage-cheese-toast.jpg",
+        "pin_description": "Thick dark toast on a small plate, glossy whipped cottage cheese, chili crisp pooling at the edge.",
+        "alt": "Whipped cottage cheese toast topped with chili crisp and flaky salt",
+        "ingredients": ["1 thick slice sourdough or seeded bread", "3/4 cup (170g) cottage cheese", "1 tsp chili crisp or hot honey", "Flaky salt", "Optional: a few cucumber ribbons"],
+        "steps": [
+          "Toast the bread dark. Dark toast holds up under a wet topping.",
+          "Blitz the cottage cheese for 20 seconds in a small blender, or mash it hard with a fork, until it turns glossy.",
+          "Pile it on the toast, spoon the chili crisp over, finish with flaky salt."
+        ],
+        "why_it_works": "Cottage cheese whipped is a different food than cottage cheese scooped. Same tub, no shopping trip, 28 grams of protein."
+      },
+      {
+        "anchor": "savory-oats-jammy-egg",
+        "name": "Savory oats with a jammy egg",
+        "description": "Oats cooked like risotto with cheese and soy, topped with a 7-minute egg.",
+        "time_minutes": 10,
+        "servings": 1,
+        "protein_g": 24,
+        "image": null,
+        "schema_image": "/img/recipes/savory-oats-jammy-egg.jpg",
+        "pin_description": "Small bowl of thick oats, halved 7-minute egg on top, scallion and cracked pepper, spoon resting in the bowl.",
+        "alt": "Savory oats topped with a halved jammy egg, scallion and black pepper",
+        "ingredients": ["1/2 cup rolled oats", "1 cup water or broth", "1 egg", "2 tbsp grated parmesan or cheddar", "Scallion, soy sauce, black pepper"],
+        "steps": [
+          "Boil water in a small pot. Lower one egg in for 7 minutes, then move it to cold water.",
+          "Add the oats to the same water and cook 5 minutes, stirring, until thick.",
+          "Stir in the cheese and a splash of soy. Top with the peeled egg, halved, plus scallion and a lot of pepper."
+        ],
+        "why_it_works": "Oats are only a sweet food by habit. Treated like risotto they carry cheese, egg and salt, and the pot count stays at one."
+      },
+      {
+        "anchor": "freezer-berry-yogurt-bowl",
+        "name": "Freezer-berry yogurt bowl with toasted seeds",
+        "description": "Thick Greek yogurt with warm frozen berries and dry-toasted seeds.",
+        "time_minutes": 6,
+        "servings": 1,
+        "protein_g": 26,
+        "image": null,
+        "schema_image": "/img/recipes/freezer-berry-yogurt-bowl.jpg",
+        "pin_description": "Wide shallow bowl of thick yogurt, dark berry syrup spooned over one side, toasted pumpkin seeds scattered.",
+        "alt": "Greek yogurt bowl with warm frozen berries and toasted pumpkin seeds",
+        "ingredients": ["1 cup plain Greek yogurt", "3/4 cup frozen berries", "2 tbsp pumpkin or sunflower seeds", "1 tsp honey or maple", "Pinch of cinnamon"],
+        "steps": [
+          "Toast the seeds dry in a small pan, 3 minutes, until they start popping.",
+          "Microwave the frozen berries 45 seconds so they collapse into their own syrup.",
+          "Spoon the berries over the yogurt, add the seeds and cinnamon, drizzle honey."
+        ],
+        "why_it_works": "Frozen berries make their own sauce, which is the part a fresh berry cannot do. This is also the cheapest 26 grams on the list."
+      },
+      {
+        "anchor": "black-bean-egg-skillet",
+        "name": "Black bean and egg skillet, wrapped",
+        "description": "Smashed black beans and eggs in one skillet, rolled into warm tortillas.",
+        "time_minutes": 9,
+        "servings": 2,
+        "protein_g": 22,
+        "image": null,
+        "schema_image": "/img/recipes/black-bean-egg-skillet.jpg",
+        "pin_description": "Cast iron pan, half smashed black beans and half two cooked eggs, two rolled tortillas on a board beside it.",
+        "alt": "Black bean and egg skillet with two tortillas rolled and cut in half",
+        "ingredients": ["1 can black beans, drained", "2 eggs", "2 flour tortillas", "1/2 tsp cumin", "Salsa, cheese, cilantro — whatever is open"],
+        "steps": [
+          "Warm the beans in a dry skillet with the cumin, smashing about half of them.",
+          "Push them aside, crack the eggs into the empty half, cover, 3 minutes.",
+          "Warm the tortillas over the same burner, fill, add salsa, roll tight."
+        ],
+        "why_it_works": "One pan, one can, and the can was already in the cupboard. It doubles for two people without doubling the time."
+      },
+      {
+        "anchor": "peanut-banana-shake",
+        "name": "Peanut banana shake, no protein powder",
+        "description": "Banana, peanut butter and cottage cheese blended into a 21g protein shake.",
+        "time_minutes": 4,
+        "servings": 1,
+        "protein_g": 21,
+        "image": null,
+        "schema_image": "/img/recipes/peanut-banana-shake.jpg",
+        "pin_description": "Tall glass of thick pale-brown shake on a counter, blender jar behind it, banana peel to the side.",
+        "alt": "Peanut butter and banana protein shake in a tall glass beside a blender",
+        "ingredients": ["1 banana, ideally frozen", "1 cup milk or kefir", "2 tbsp peanut butter", "1/2 cup cottage cheese or Greek yogurt", "Pinch of salt, ice"],
+        "steps": [
+          "Put everything in the blender, cottage cheese first so it sits against the blade.",
+          "Blend 45 seconds. Longer than feels necessary — that is what makes it smooth instead of grainy.",
+          "Salt it. A pinch of salt is the difference between this and a sad smoothie."
+        ],
+        "why_it_works": "Twenty-one grams of protein with nothing bought from a supplement aisle. Freeze bananas as they turn and this is a four-minute breakfast forever."
+      }
+    ],
+    "interstitials": [
+      { "style": "photo_band", "line": "Three things you already have. That is the whole input.", "image": { "src": "../assets/photos/lifestyle/pan-steam.jpg", "alt": "A hand stirring a hot pan on the stove", "source": "library" } },
+      { "style": "dark_strip", "line": "Still standing at the open fridge tomorrow at 7:12?" }
+    ],
+    "cta_cadence": ["header", "bridge", "photo_break", "mid_strip", "footer", "sticky"],
+    "supporting_sections": [
+      {
+        "type": "protein_math",
+        "eyebrow": "Protein math",
+        "heading": "Where the protein actually comes from",
+        "body": "None of these use powder. In every case one ingredient is doing most of the work, which is worth knowing, because that is the ingredient worth keeping stocked.",
+        "rows": [
+          { "label": "Cottage cheese toast", "value": "28g", "note": "3/4 cup cottage cheese carries 24g of it" },
+          { "label": "Savory oats, jammy egg", "value": "24g", "note": "Parmesan 8g, egg 6g, the oats themselves 5g" },
+          { "label": "Berry yogurt bowl", "value": "26g", "note": "One cup of Greek yogurt, 20g" },
+          { "label": "Bean and egg skillet", "value": "22g", "note": "Half a can of beans plus one egg" },
+          { "label": "Peanut banana shake", "value": "21g", "note": "Cottage cheese 12g, peanut butter 7g" }
+        ],
+        "footnote": "Per serving, rounded. Calculated from USDA averages—your brands will move each number by a gram or two.",
+        "images": [
+          { "src": "../assets/photos/food/nuts-almonds.png", "alt": "A small bowl of almonds on a wooden board", "source": "library" },
+          { "src": "../assets/photos/food/berries-negative-space.jpg", "alt": "Fresh berries and citrus laid out on a pale surface", "source": "library" }
+        ]
+      }
+    ],
+    "faq": [
+      { "q": "What is the fastest high-protein breakfast?", "a": "The peanut banana shake, at about four minutes and 21 grams of protein. Everything goes in the blender at once and there is nothing to wash but the jar." },
+      { "q": "Can I make any of these the night before?", "a": "The savory oats and the yogurt bowl both hold. Cook the oats and refrigerate them, then loosen with a splash of water in the morning. For the yogurt bowl, keep the toasted seeds in a separate jar so they stay crisp." },
+      { "q": "How do I get to 30 grams of protein at breakfast?", "a": "Add one thing rather than making a bigger portion. An extra egg, two tablespoons of hemp seeds, or half a cup of cottage cheese each add roughly six to twelve grams without changing the recipe or the timing." }
+    ],
+    "internal_links": [
+      { "title": "Pantry dinners in 15 minutes", "url": "/recipes/15-minute-pantry-dinners", "meta": "6 recipes · placeholder URL" },
+      { "title": "What to cook when the fridge looks empty", "url": "/recipes/cook-when-fridge-looks-empty", "meta": "5 recipes · placeholder URL" },
+      { "title": "One can of chickpeas, five ways", "url": "/recipes/one-can-chickpeas-five-ways", "meta": "5 recipes · placeholder URL" }
+    ],
+    "final_cta": {
+      "headline": "Tomorrow's breakfast is already in your fridge.",
+      "image": { "src": "../assets/photos/fridge/fridge-warm-open.jpg", "alt": "", "source": "library" }
+    },
+    "provenance_line": "Recipes on this page are developed with the iEatz recipe engine and edited by a person before publishing. Times, servings and protein figures are tested against the written method."
+  },
+  "cta": {
+    "arm": "lp",
+    "destination": "page",
+    "url": "",
+    "campaign_token": "pin-lp",
+    "utm": { "utm_source": "pinterest", "utm_medium": "organic", "utm_campaign": "ingredient-idea", "utm_content": "10min-breakfasts-busy-mornings" },
+    "pin_cta_copy": "Get all five recipes"
+  },
+  "page_status": {
+    "eligibility": { "score": 100, "eligible": true, "reasons": ["golden fixture"] },
+    "state": "planned",
+    "url": "",
+    "live_verified_at": "",
+    "failure": null,
+    "fallback_used": false
+  }
+}

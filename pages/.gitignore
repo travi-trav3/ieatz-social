@@ -1,0 +1,4 @@
+node_modules/
+.staging/
+*.log
+templates/pinterest-roundup/golden/.candidates/

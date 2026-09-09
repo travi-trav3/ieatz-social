@@ -1,0 +1,18 @@
+{
+  "_about": "STAND-IN, not the real ledger. Built from the Pinterest post filenames in posts/ (w25 to w27) because the batch ledgers are not in git (DISCOVERY.md). Titles and query targets are reconstructed guesses so eligibility.js has something to score. Replace with the real ledgers on the first local run and re-tune thresholds once.",
+  "pages_meta": { "lastArm": null },
+  "posts": [
+    { "id": "w25-pin-priya-quote", "channel": "pinterest", "pillar": "Quote", "title": "Priya on getting her evenings back", "query_target": "", "dueAt": "2026-06-16T13:20:00-07:00", "status": "sent" },
+    { "id": "w25-pin-receipt-hero", "channel": "pinterest", "pillar": "Product Feature", "title": "Snap the receipt, get the week's dinners", "query_target": "", "dueAt": "2026-06-17T07:35:00-07:00", "status": "sent" },
+    { "id": "w25-pin-salmon-recipe", "channel": "pinterest", "pillar": "Recipe", "title": "20-minute miso salmon with rice", "query_target": "quick salmon dinner recipe", "niche": { "inventory": "salmon, rice, miso", "constraint": "20 minutes", "outcome": "dinner" }, "dueAt": "2026-06-18T18:10:00-07:00", "status": "sent" },
+    { "id": "w25-pin-tacos-recipe", "channel": "pinterest", "pillar": "Recipe", "title": "3 pantry dinners from one can of black beans", "query_target": "what can I make with a can of black beans", "niche": { "inventory": "canned beans", "constraint": "pantry only", "outcome": "dinner" }, "dueAt": "2026-06-19T12:15:00-07:00", "status": "sent" },
+    { "id": "w25-pin-waste-stat", "channel": "pinterest", "pillar": "Money/Waste", "title": "$1,500 of groceries a year end up in the bin", "query_target": "", "dueAt": "2026-06-21T09:50:00-07:00", "status": "sent" },
+    { "id": "w26-pin-leftover-rice", "channel": "pinterest", "pillar": "Ingredient Idea", "title": "5 dinners from leftover rice", "query_target": "what can I make with leftover rice", "niche": { "inventory": "leftover rice", "constraint": "weeknight", "outcome": "dinner" }, "dueAt": "2026-06-23T18:40:00-07:00", "status": "sent" },
+    { "id": "w26-pin-life-back", "channel": "pinterest", "pillar": "Lifestyle", "title": "The life you get back when dinner is decided", "query_target": "", "dueAt": "2026-06-24T07:20:00-07:00", "status": "sent" },
+    { "id": "w26-pin-persona-parent", "channel": "pinterest", "pillar": "Persona Spotlight", "title": "5 weeknight dinners a parent of three actually cooks", "query_target": "easy weeknight dinners for a family of five", "niche": { "inventory": "whatever is in the fridge", "constraint": "30 minutes, kids", "outcome": "family dinner" }, "dueAt": "2026-06-26T12:05:00-07:00", "status": "sent" },
+    { "id": "w26-pin-transformation", "channel": "pinterest", "pillar": "Transformation", "title": "Three weeks without takeout", "query_target": "", "dueAt": "2026-06-28T21:10:00-07:00", "status": "sent" },
+    { "id": "w27-pin-poke-swap", "channel": "pinterest", "pillar": "Eat This Not That", "title": "Swap the $18 poke bowl for this 12-minute one", "query_target": "how to make a poke bowl at home", "niche": { "inventory": "rice, tuna or tofu, cucumber", "constraint": "12 minutes", "outcome": "lunch" }, "dueAt": "2026-06-30T12:30:00-07:00", "status": "sent" },
+    { "id": "w27-pin-waste-monthly", "channel": "pinterest", "pillar": "Money/Waste", "title": "What $125 a month of wasted food looks like", "query_target": "", "dueAt": "2026-07-02T09:15:00-07:00", "status": "sent" },
+    { "id": "w27-ig-chickpea-ideas", "channel": "instagram", "pillar": "Ingredient Idea", "title": "One can of chickpeas, five ways", "query_target": "what to make with a can of chickpeas", "dueAt": "2026-07-01T18:00:00-07:00", "status": "sent" }
+  ]
+}

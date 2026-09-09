@@ -1,0 +1,124 @@
+{
+  "_about": "Every recipe and query ever published to /recipes/, for the uniqueness rules in eligibility.js and validate-page.js. Appended by deploy-page.js on every successful deploy. Never hand-edit a recipe entry; remove a page entry only if the page is taken down.",
+  "pages": [
+    {
+      "id": "10min-breakfasts-busy-mornings",
+      "slug": "10-minute-breakfasts-busy-mornings",
+      "url": "https://ieatzhealthy.com/recipes/10-minute-breakfasts-busy-mornings/",
+      "title": "10-minute high-protein breakfasts for busy mornings",
+      "h1": "What can I make for breakfast in 10 minutes?",
+      "query": "what can I make for breakfast in 10 minutes",
+      "tags": [
+        "breakfast",
+        "quick",
+        "high-protein",
+        "eggs",
+        "oats",
+        "yogurt",
+        "beans",
+        "banana",
+        "cottage cheese"
+      ],
+      "recipe_count": 5,
+      "state": "deployed",
+      "deployed_at": "2026-09-09T05:19:31.560Z",
+      "commit": "f12bae908d13f5b8afefcbd767ce6fbc5ffabf3c",
+      "pr": "https://github.com/travi-trav3/iEatz/pull/2"
+    }
+  ],
+  "recipes": [
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "anchor": "cottage-cheese-toast",
+      "name": "Whipped cottage cheese toast with chili crisp",
+      "ingredients": [
+        "1 thick slice sourdough or seeded bread",
+        "3/4 cup (170g) cottage cheese",
+        "1 tsp chili crisp or hot honey",
+        "Flaky salt",
+        "Optional: a few cucumber ribbons"
+      ],
+      "primary_protein": "cottage cheese",
+      "method": "toast"
+    },
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "anchor": "savory-oats-jammy-egg",
+      "name": "Savory oats with a jammy egg",
+      "ingredients": [
+        "1/2 cup rolled oats",
+        "1 cup water or broth",
+        "1 egg",
+        "2 tbsp grated parmesan or cheddar",
+        "Scallion, soy sauce, black pepper"
+      ],
+      "primary_protein": "egg",
+      "method": "simmer"
+    },
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "anchor": "freezer-berry-yogurt-bowl",
+      "name": "Freezer-berry yogurt bowl with toasted seeds",
+      "ingredients": [
+        "1 cup plain Greek yogurt",
+        "3/4 cup frozen berries",
+        "2 tbsp pumpkin or sunflower seeds",
+        "1 tsp honey or maple",
+        "Pinch of cinnamon"
+      ],
+      "primary_protein": "yogurt",
+      "method": "assemble"
+    },
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "anchor": "black-bean-egg-skillet",
+      "name": "Black bean and egg skillet, wrapped",
+      "ingredients": [
+        "1 can black beans, drained",
+        "2 eggs",
+        "2 flour tortillas",
+        "1/2 tsp cumin",
+        "Salsa, cheese, cilantro, whatever is open"
+      ],
+      "primary_protein": "egg",
+      "method": "skillet"
+    },
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "anchor": "peanut-banana-shake",
+      "name": "Peanut banana shake, no protein powder",
+      "ingredients": [
+        "1 banana, ideally frozen",
+        "1 cup milk or kefir",
+        "2 tbsp peanut butter",
+        "1/2 cup cottage cheese or Greek yogurt",
+        "Pinch of salt, ice"
+      ],
+      "primary_protein": "cottage cheese",
+      "method": "blend"
+    }
+  ],
+  "bridge_sentences": [
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "sentence": "All five are good."
+    },
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "sentence": "All five are also a guess about your kitchen."
+    },
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "sentence": "iEatz runs the other direction: it starts from what is actually in there this morning, which is the one thing a page like this can never know."
+    }
+  ],
+  "supporting_types_by_page": [
+    {
+      "page": "10-minute-breakfasts-busy-mornings",
+      "types": [
+        "protein_math",
+        "make_ahead"
+      ]
+    }
+  ]
+}
