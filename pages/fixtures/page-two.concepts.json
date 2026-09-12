@@ -1,0 +1,13 @@
+[
+  {
+    "id": "high-protein-dinners-kids",
+    "channel": "pinterest",
+    "pillar": "Persona Spotlight",
+    "title": "4 high protein dinners kids will actually eat",
+    "query_target": "high protein meals for kids",
+    "niche": { "inventory": "eggs, cheese, yogurt, beans, ground meat, pasta", "constraint": "25 minutes, picky eaters, one pan for everyone", "outcome": "family dinner" },
+    "tags": ["kids", "family dinner", "high-protein", "picky eaters", "eggs", "beans", "chicken", "yogurt", "pasta", "cheese", "lentils"],
+    "dueAt": "2026-09-22T16:35:00-07:00",
+    "status": "pending"
+  }
+]

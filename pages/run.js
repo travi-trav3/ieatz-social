@@ -28,7 +28,28 @@ const { verifyLive } = require('./lib/verify-live');
 function args() {
   const a = process.argv.slice(2);
   const get = (k) => { const i = a.indexOf(k); return i === -1 ? null : a[i + 1]; };
-  return { batch: get('--batch'), ledger: get('--ledger'), concepts: get('--concepts'), dryRun: a.includes('--dry-run'), only: get('--only'), runId: get('--run-id') || U.runId(), assumeLive: get('--assume-live'), evidence: get('--evidence') };
+  return { batch: get('--batch'), ledger: get('--ledger'), concepts: get('--concepts'), dryRun: a.includes('--dry-run'), only: get('--only'), runId: get('--run-id') || U.runId(), assumeLive: get('--assume-live'), evidence: get('--evidence'), republish: get('--republish') };
+}
+
+// --republish <id>: re-render a page that is already live from its content
+// file (new photos dropped in, a related link gained, a template fix) and
+// deploy it. No eligibility, no pin changes.
+async function republish(id, ctx, opt) {
+  const { config, facts, site, corpus } = ctx;
+  const file = generator.contentPath(id);
+  if (!fs.existsSync(file)) throw new Error(`no content file for ${id}`);
+  const obj = U.readJson(file);
+  await images.sourceImages(obj, { config, library: ctx.library, websiteRepo: site.website_repo });
+  const html = renderPage.render(obj, site, facts);
+  const vh = validateHtml(html, { obj, config, facts, site, willExist: new Set([config.site.recipes_path]) });
+  if (!vh.ok) throw new Error(`html validation: ${vh.errors.join(' | ')}`);
+  const staged = renderPage.stage(obj, html, { config, runId: opt.runId });
+  fs.writeFileSync(path.join(staged.staging, config.site.recipes_path.replace(/^\//, ''), 'index.html'), linkGraph.renderHubIndex(corpus, site, config));
+  U.writeJson(file, obj);
+  if (opt.dryRun) { console.log(`${id}: republish staged at ${staged.staging} (dry run)`); return; }
+  const d = await deployPage.deploy({ staging: staged.staging, repo: site.website_repo, config, conceptId: id, runId: opt.runId, message: `Republish recipes page for ${id}\n\nRun: ${opt.runId}` });
+  console.log(`${id}: republished ${d.commit ? d.commit.slice(0, 7) : '(nothing changed)'} on ${d.branch}`);
+  U.saveLibrary(ctx.library);
 }
 
 function syntheticLedger(conceptsPath, config) {
@@ -49,6 +70,8 @@ async function main() {
   const ctx = { config, facts, corpus, library, site, runId: opt.runId, mode: 'production' };
   const report = { runId: opt.runId, started: U.nowIso(), dryRun: opt.dryRun, considered: [], pages: [], routes: [], needsTravis: [], notes: [] };
   const log = (s) => { console.log(s); report.notes.push(s); };
+
+  if (opt.republish) return republish(opt.republish, ctx, opt);
 
   let ledger;
   if (opt.concepts) ledger = syntheticLedger(opt.concepts, config);
@@ -116,7 +139,7 @@ async function main() {
         if (v.via === 'external') { ps.live_verified_via = 'external'; ps.live_evidence = v.evidence; log(`${id}: marked live from external evidence: ${v.evidence}`); }
         entry.live = v;
         if (v.ok) { ps.state = 'live'; ps.live_verified_at = v.verified_at; linkGraph.addToCorpus(corpus, obj, config, { state: 'live', deployed_at: (corpus.pages.find((p) => p.slug === obj.page.slug) || {}).deployed_at || U.nowIso(), live_verified_at: v.verified_at }); U.saveCorpus(corpus); entry.state = 'live'; }
-        else { ps.failure = v.reason; entry.state = 'deployed-unverified'; report.needsTravis.push(`${id}: deployed but not live (${v.reason}). If the PR is open, merge it and rerun.`); }
+        else { ps.failure = v.unreachable ? null : v.reason; entry.state = 'deployed-unverified'; report.needsTravis.push(`${id}: deployed but not verified (${v.reason}). ${v.unreachable ? 'Use --assume-live with the Action run as evidence.' : 'If the PR is open, merge it and rerun.'}`); }
         continue;
       }
       // 2c. Images.
@@ -138,15 +161,27 @@ async function main() {
       const smPath = path.join(site.website_repo, config.site.website_repo.sitemap);
       const sm = linkGraph.updateSitemap(fs.existsSync(smPath) ? fs.readFileSync(smPath, 'utf8') : '', [linkGraph.pageUrlOf(config, obj.page.slug)], config);
       fs.writeFileSync(path.join(staged.staging, config.site.website_repo.sitemap), sm);
-      const changed = linkGraph.backfillRelated(corpus, obj, config, (cid) => { const f = generator.contentPath(cid); return fs.existsSync(f) ? U.readJson(f) : null; });
+      const loadContent = (cid) => { const f = generator.contentPath(cid); return fs.existsSync(f) ? U.readJson(f) : null; };
+      const changed = linkGraph.backfillRelated(corpus, obj, config, loadContent);
+      // Also re-render any live page whose content already carries the link
+      // (a previous dry run wrote it) but whose deployed HTML does not.
+      const newUrl = linkGraph.pageUrlOf(config, obj.page.slug);
+      for (const p of corpus.pages || []) {
+        if (p.slug === obj.page.slug || p.state !== 'live' || changed.some((c) => c.page.slug === p.slug)) continue;
+        const other = loadContent(p.id);
+        if (!other || !(other.page.internal_links || []).some((l) => l.url === newUrl)) continue;
+        const deployedHtml = path.join(site.website_repo, renderPage.pagePath(config, p.slug));
+        if (fs.existsSync(deployedHtml) && !fs.readFileSync(deployedHtml, 'utf8').includes(newUrl)) changed.push(other);
+      }
       for (const other of changed) {
         const otherHtml = renderPage.render(other, site, facts);
         const ovh = validateHtml(otherHtml, { obj: other, config, facts, site, willExist });
         if (!ovh.ok) { log(`${id}: related backfill on ${other.page.slug} failed validation, skipped: ${ovh.errors.join(' | ')}`); continue; }
         renderPage.stage(other, otherHtml, { config, runId: opt.runId });
-        U.writeJson(generator.contentPath(other.id), other);
+        if (!opt.dryRun) U.writeJson(generator.contentPath(other.id), other);
+        log(`${id}: related block on ${other.page.slug} gains the link; page re-rendered`);
       }
-      U.writeJson(generator.contentPath(id), obj);
+      if (!opt.dryRun) U.writeJson(generator.contentPath(id), obj);
       entry.staging = staged.staging;
       if (opt.dryRun) { entry.state = 'validated (dry run)'; log(`${id}: dry run, staged at ${staged.staging}`); continue; }
       // 2f. Deploy.
@@ -168,6 +203,7 @@ async function main() {
       const v = await verifyLive(ps.url, obj.page.og_title || obj.page.h1, config, log);
       entry.live = v;
       if (v.ok) { ps.state = 'live'; ps.live_verified_at = v.verified_at; linkGraph.addToCorpus(corpus, obj, config, { state: 'live', commit: d.commit, live_verified_at: v.verified_at }); U.saveCorpus(corpus); entry.state = 'live'; }
+      else if (v.unreachable) { ps.state = 'deployed'; ps.failure = null; entry.state = 'deployed (verification pending: ' + v.reason + ')'; report.needsTravis.push(`${id}: deployed at ${ps.url} but this environment cannot reach the domain. The website repo's verify-recipes Action verifies on push; rerun with --assume-live ${id} --evidence "<Action run>" to mark it live and wire the pin.`); }
       else { ps.state = 'failed'; ps.failure = v.reason; entry.state = 'failed'; entry.fallback_used = true; }
     } catch (e) {
       ps.state = 'failed';

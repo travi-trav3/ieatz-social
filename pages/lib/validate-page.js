@@ -160,15 +160,19 @@ function validateObject(obj, ctx) {
 
   // Internal links.
   const links = page.internal_links || [];
-  const corpusUrls = new Set((corpus.pages || []).filter((p) => p.state === 'live' && p.slug !== page.slug).map((p) => p.url));
+  // A deployed page counts as linkable: it is in the repo (validateHtml checks
+  // the file) and goes live on the same push; only live pages count toward
+  // the bootstrap threshold.
+  const corpusUrls = new Set((corpus.pages || []).filter((p) => (p.state === 'live' || p.state === 'deployed') && p.slug !== page.slug).map((p) => p.url));
   const hub = `${config.site.origin}${config.site.recipes_path}`;
   const home = `${config.site.origin}/`;
-  const livePages = corpusUrls.size;
+  const livePages = (corpus.pages || []).filter((p) => p.state === 'live' && p.slug !== page.slug).length;
   if (mode === 'production') {
     if (livePages < config.pages.internalLinks.bootstrapUntilCorpusSize) {
-      const set = new Set(links.map((l) => l.url));
-      const okSet = set.size === 2 && (set.has(hub) || set.has(config.site.recipes_path)) && (set.has(home) || set.has('/'));
-      if (!okSet) err('links-bootstrap', `with ${livePages} live pages, internal_links must be exactly the hub index and the homepage`);
+      // Bootstrap: the hub and the homepage stand in for related pages until
+      // the cluster has three live pages. Live pages may be linked as they appear.
+      if (links.length < 1 || links.length > config.pages.internalLinks.max) err('links-bootstrap', `with ${livePages} live pages, internal_links needs 1 to ${config.pages.internalLinks.max} entries (hub, homepage, or live pages)`);
+      for (const l of links) if (!corpusUrls.has(l.url) && l.url !== hub && l.url !== home && l.url !== config.site.recipes_path && l.url !== '/') err('links-bootstrap', `with ${livePages} live pages, internal_links may only be the hub index, the homepage, or a live page: ${l.url}`);
     } else {
       if (links.length < config.pages.internalLinks.min || links.length > config.pages.internalLinks.max) err('links-count', `${links.length} internal links; need ${config.pages.internalLinks.min} to ${config.pages.internalLinks.max}`);
       for (const l of links) if (!corpusUrls.has(l.url) && l.url !== hub && l.url !== home) err('links-live', `internal link to a page that is not live: ${l.url}`);

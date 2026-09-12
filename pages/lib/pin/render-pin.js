@@ -12,7 +12,7 @@ const { esc } = require('../../templates/pinterest-roundup/partials/h');
 
 const FONTS = path.resolve(__dirname, '../../templates/pinterest-roundup/golden/fonts');
 
-function html({ headline, subline, chip, photoSrc, photoAlt, logoSvg }) {
+function html({ eyebrow, headline, subline, chip, photoSrc, photoAlt, logoSvg }) {
   return `<!DOCTYPE html><html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -30,7 +30,7 @@ p{font-size:32px;line-height:1.35;color:#5C625E;margin:28px 0 0;max-width:760px;
 </style></head><body>
 <img class="photo" src="${esc(photoSrc)}" alt="${esc(photoAlt)}"><div class="wash"></div>
 <div class="card">
-<div class="eyebrow"><span class="bar"></span><span>Breakfast &middot; 10 minutes &middot; 20g+ protein</span></div>
+<div class="eyebrow"><span class="bar"></span><span>${esc(eyebrow)}</span></div>
 <h1>${esc(headline)}</h1>
 <p>${esc(subline)}</p>
 </div>
@@ -39,12 +39,13 @@ p{font-size:32px;line-height:1.35;color:#5C625E;margin:28px 0 0;max-width:760px;
 </body></html>`;
 }
 
-async function renderPin({ site, headline, subline, chip, photoSrc, photoAlt, outFile }) {
+async function renderPin({ site, eyebrow, headline, subline, chip, photoSrc, photoAlt, outFile }) {
+  if (!eyebrow) throw new Error('renderPin: eyebrow is required (it is page-specific)');
   const browser = await launch();
   try {
     const ctx = await browser.newContext({ viewport: { width: 1000, height: 1500 }, deviceScaleFactor: 2 });
     const page = await openRendered(ctx, {
-      html: html({ headline, subline, chip, photoSrc, photoAlt, logoSvg: site.logo_mark_svg }),
+      html: html({ eyebrow, headline, subline, chip, photoSrc, photoAlt, logoSvg: site.logo_mark_svg }),
       pageUrl: `${site.origin}/__pin/`,
       assetRoot: site.website_repo,
       fontsDir: FONTS,

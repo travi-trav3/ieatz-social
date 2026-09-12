@@ -20,12 +20,38 @@
         "cottage cheese"
       ],
       "recipe_count": 5,
-      "state": "deployed",
+      "state": "live",
       "deployed_at": "2026-09-09T21:42:14.880Z",
       "commit": null,
       "pr": null,
       "live_verified_at": "2026-09-12T04:22:47Z",
       "verified_via": "github-action"
+    },
+    {
+      "id": "high-protein-dinners-kids",
+      "slug": "high-protein-dinners-kids-actually-eat",
+      "url": "https://ieatzhealthy.com/recipes/high-protein-dinners-kids-actually-eat/",
+      "title": "High protein dinners kids will actually eat",
+      "h1": "What high protein dinners will my kids actually eat?",
+      "query": "high protein meals for kids",
+      "tags": [
+        "kids",
+        "family dinner",
+        "high-protein",
+        "picky eaters",
+        "eggs",
+        "beans",
+        "chicken",
+        "yogurt",
+        "pasta",
+        "cheese",
+        "lentils"
+      ],
+      "recipe_count": 4,
+      "state": "deployed",
+      "deployed_at": "2026-09-12T04:56:53.124Z",
+      "commit": "a58acd8f038c10753f8de357a8f97263ab876a2a",
+      "pr": null
     }
   ],
   "recipes": [
@@ -98,6 +124,71 @@
       ],
       "primary_protein": "cottage cheese",
       "method": "blend"
+    },
+    {
+      "page": "high-protein-dinners-kids-actually-eat",
+      "anchor": "cheesy-egg-bean-quesadillas",
+      "name": "Cheesy egg and black bean quesadillas",
+      "ingredients": [
+        "3 eggs",
+        "1/2 cup canned black beans, drained",
+        "1/2 cup shredded cheddar or Monterey Jack",
+        "2 large flour tortillas",
+        "1 tsp butter or oil",
+        "Pinch of salt",
+        "Grown-up plate: salsa, sliced jalapeno, a handful of spinach"
+      ],
+      "primary_protein": "egg",
+      "method": "skillet"
+    },
+    {
+      "page": "high-protein-dinners-kids-actually-eat",
+      "anchor": "yogurt-ranch-chicken-tenders",
+      "name": "Crispy yogurt ranch chicken tenders",
+      "ingredients": [
+        "1 lb chicken tenders or breast cut into strips",
+        "3/4 cup plain Greek yogurt",
+        "1 tbsp ranch seasoning",
+        "1 cup panko breadcrumbs",
+        "1/4 cup grated parmesan",
+        "1 tbsp olive oil",
+        "Grown-up plate: a bag of salad greens, lemon, extra ranch yogurt as dressing"
+      ],
+      "primary_protein": "chicken",
+      "method": "bake"
+    },
+    {
+      "page": "high-protein-dinners-kids-actually-eat",
+      "anchor": "lentil-turkey-pasta-sauce",
+      "name": "Pasta with lentil and turkey sauce",
+      "ingredients": [
+        "1/2 lb ground turkey or beef",
+        "1/2 cup red lentils, rinsed",
+        "1 jar (24 oz) marinara or crushed tomatoes",
+        "1 cup water",
+        "1 tbsp olive oil",
+        "1/2 tsp garlic powder",
+        "12 oz pasta, any shape the kids will eat",
+        "Grown-up plate: chili flakes, grated parmesan, torn basil"
+      ],
+      "primary_protein": "turkey",
+      "method": "simmer"
+    },
+    {
+      "page": "high-protein-dinners-kids-actually-eat",
+      "anchor": "cottage-cheese-mac",
+      "name": "Stovetop cottage cheese mac and cheese",
+      "ingredients": [
+        "12 oz elbow macaroni",
+        "1 cup cottage cheese",
+        "1/2 cup milk",
+        "1 1/2 cups shredded sharp cheddar",
+        "1 tbsp butter",
+        "1/2 tsp salt",
+        "Grown-up plate: frozen peas, hot sauce, roasted broccoli if there is any"
+      ],
+      "primary_protein": "cottage cheese",
+      "method": "stovetop"
     }
   ],
   "bridge_sentences": [
@@ -112,6 +203,14 @@
     {
       "page": "10-minute-breakfasts-busy-mornings",
       "sentence": "iEatz runs the other direction: it starts from what is actually in there this morning, which is the one thing a page like this can never know."
+    },
+    {
+      "page": "high-protein-dinners-kids-actually-eat",
+      "sentence": "These four are a guess about a kitchen like yours, and a guess is all a page can make."
+    },
+    {
+      "page": "high-protein-dinners-kids-actually-eat",
+      "sentence": "iEatz starts from what is already on your shelf tonight, the half tub of yogurt, the eggs, the open bag of cheese, so the dinner it suggests is one you can make without another trip to the store."
     }
   ],
   "supporting_types_by_page": [
@@ -120,6 +219,13 @@
       "types": [
         "protein_math",
         "make_ahead"
+      ]
+    },
+    {
+      "page": "high-protein-dinners-kids-actually-eat",
+      "types": [
+        "substitutions",
+        "common_mistakes"
       ]
     }
   ]
