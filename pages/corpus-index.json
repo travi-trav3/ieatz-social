@@ -23,7 +23,9 @@
       "state": "deployed",
       "deployed_at": "2026-09-09T21:42:14.880Z",
       "commit": null,
-      "pr": null
+      "pr": null,
+      "live_verified_at": "2026-09-12T04:22:47Z",
+      "verified_via": "github-action"
     }
   ],
   "recipes": [

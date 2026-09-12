@@ -26,3 +26,8 @@ Started 2026-09-09T21:44:32.317Z.
 - Slack alert Dr0C0PCQ9Y94 scheduled in #all-ieatz-healthy at the same time.
 - Live verification evidence: Travis confirmed the page loads on 2026-09-09. Machine verification (verify-recipes Action) still needs GitHub Actions enabled on travi-trav3/iEatz.
 - Bugs fixed on the way: a rerun of the same concept excluded itself as an existing page; the run read page state through a stale reference and re-deployed/re-polled a live page. Both covered by the idempotent rerun above.
+
+## 2026-09-12: machine verification
+
+- GitHub Actions enabled by Travis. Workflow rewritten without marketplace actions (repo policy allows first-party only). Run 34672839503: LIVE after 1 attempt, commit status recipes/verify-live/10-minute-breakfasts-busy-mornings posted on 1011b82.
+- From here every push to main touching recipes/ or sitemap.xml verifies itself.

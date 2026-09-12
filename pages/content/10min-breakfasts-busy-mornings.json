@@ -30,7 +30,7 @@
     },
     "state": "live",
     "url": "https://ieatzhealthy.com/recipes/10-minute-breakfasts-busy-mornings/",
-    "live_verified_at": "",
+    "live_verified_at": "2026-09-12T04:22:47Z",
     "failure": null,
     "fallback_used": false,
     "utility_check": {
@@ -74,10 +74,11 @@
     },
     "reviewed_by_person": true,
     "live_verification": {
-      "status": "human",
-      "by": "Travis",
-      "date": "2026-09-09",
-      "note": "confirmed in browser; machine check pending until GitHub Actions is enabled on travi-trav3/iEatz"
+      "status": "machine",
+      "via": "verify-recipes GitHub Action run 34672839503",
+      "result": "LIVE after 1 attempt: HTTP 200, og:title matched, JSON-LD parsed",
+      "commit_status": "recipes/verify-live/10-minute-breakfasts-busy-mornings on 1011b82",
+      "earlier": "owner-confirmed in browser 2026-09-09"
     }
   },
   "cta": {
