@@ -43,6 +43,14 @@ function rotate(list, previous) {
   return list[(idx + 1) % list.length];
 }
 
+// CTA copy may name the recipe count with {count}; it is filled from the page
+// so a four-recipe page never promises five.
+const COUNT_WORDS = { 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight' };
+function fillCount(copy, post) {
+  const n = post.page && post.page.recipes ? post.page.recipes.length : 0;
+  return String(copy).replace(/\{count\}/g, n >= 2 ? (COUNT_WORDS[n] || String(n)) : 'the');
+}
+
 function pageUrl(config, post) {
   const slug = post.page && post.page.slug;
   const base = `${config.site.origin}${config.site.recipes_path}${slug}/`;
@@ -71,7 +79,7 @@ function route(post, ctx) {
     cta.url = url;
     cta.campaign_token = facts.campaign_tokens.lp;
     cta.utm = utm;
-    cta.pin_cta_copy = rotate(config.cta.pageCtaCopy, prevCta);
+    cta.pin_cta_copy = fillCount(rotate(config.cta.pageCtaCopy, prevCta), post);
     cta.fallback = false;
     return cta;
   }
@@ -94,7 +102,10 @@ function route(post, ctx) {
 
 function routeAll(ledger, ctx) {
   const { config } = ctx;
-  let prev = null;
+  // The rotation continues from the previous batch's last pin, so two
+  // consecutive pins in different ledgers never carry the same copy.
+  const meta = L.meta(ledger);
+  let prev = meta.lastCta || null;
   const out = [];
   const posts = ledger.posts.filter((p) => L.isPinterest(config, p)).sort((a, b) => String(L.field(config, a, 'dueAt') || '').localeCompare(String(L.field(config, b, 'dueAt') || '')));
   for (const post of posts) {
@@ -103,6 +114,7 @@ function routeAll(ledger, ctx) {
     prev = cta.pin_cta_copy;
     out.push({ id: L.field(config, post, 'id'), cta });
   }
+  if (posts.length) meta.lastCta = prev;
   return out;
 }
 

@@ -1,0 +1,407 @@
+{
+  "posts": [
+    {
+      "channel": "pinterest",
+      "id": "high-protein-dinners-kids",
+      "pillar": "Persona Spotlight",
+      "title": "4 high protein dinners kids will actually eat",
+      "query_target": "high protein meals for kids",
+      "niche": {
+        "inventory": "eggs, cheese, yogurt, beans, ground meat, pasta",
+        "constraint": "25 minutes, picky eaters, one pan for everyone",
+        "outcome": "family dinner"
+      },
+      "tags": [
+        "kids",
+        "family dinner",
+        "high-protein",
+        "picky eaters",
+        "eggs",
+        "beans",
+        "chicken",
+        "yogurt",
+        "pasta",
+        "cheese",
+        "lentils"
+      ],
+      "dueAt": "2026-09-22T16:35:00-07:00",
+      "status": "pending",
+      "page_status": {
+        "eligibility": {
+          "score": 75,
+          "eligible": true,
+          "reasons": [
+            "note: no recipe on the post; recipe dedupe runs at validation",
+            "+35 title promises enumerable content",
+            "+20 pillar \"Persona Spotlight\"",
+            "+10 niche has all three axes",
+            "+10 query is question-shaped or list-shaped",
+            "eligible: 75 vs threshold 60"
+          ],
+          "hard_exclude": null
+        },
+        "state": "live",
+        "url": "https://ieatzhealthy.com/recipes/high-protein-dinners-kids-actually-eat/",
+        "live_verified_at": "2026-09-12T15:36:38.971Z",
+        "failure": null,
+        "fallback_used": false,
+        "utility_check": {
+          "passed": true,
+          "note": "Four complete recipes with a kid plate and a grown-up plate each, plus swaps and the reasons plates get refused, solve the dinner whether or not the reader ever opens the app."
+        },
+        "attempts": 3,
+        "images": {
+          "slots": {
+            "hero": "none",
+            "inset": "library",
+            "lifestyle": "library",
+            "band": "library",
+            "final": "library",
+            "recipe-1": "none",
+            "recipe-2": "none",
+            "recipe-3": "none",
+            "recipe-4": "none",
+            "supporting-1-1": "none",
+            "supporting-1-2": "none",
+            "supporting-2-1": "none",
+            "supporting-2-2": "none"
+          },
+          "cost_usd": 0,
+          "notes": [],
+          "needs_photography": [
+            "hero",
+            "recipe-1",
+            "recipe-2",
+            "recipe-3",
+            "recipe-4"
+          ]
+        },
+        "deploy": {
+          "branch": "main",
+          "commit": "a58acd8",
+          "run": "run-005-page-two",
+          "note": "run process was killed during verify-live (blocked network hung); deploy had completed"
+        },
+        "live_verification": {
+          "status": "pending",
+          "last_check": "2026-09-12T05:38Z",
+          "result": "URL serves the homepage with 200 (Cloudflare fallback); commit a58acd8 not deployed yet",
+          "action_runs": [
+            34674319147,
+            34675222284
+          ]
+        },
+        "live_verified_via": "external",
+        "live_evidence": "verify-recipes Action run 34702565073 LIVE in 1 attempt (production branch switched to main at 15:32Z)"
+      },
+      "cta": {
+        "arm": "lp",
+        "destination": "page",
+        "url": "https://ieatzhealthy.com/recipes/high-protein-dinners-kids-actually-eat/?utm_source=pinterest&utm_medium=organic&utm_campaign=persona-spotlight&utm_content=high-protein-dinners-kids",
+        "campaign_token": "pin-lp",
+        "utm": {
+          "utm_source": "pinterest",
+          "utm_medium": "organic",
+          "utm_campaign": "persona-spotlight",
+          "utm_content": "high-protein-dinners-kids"
+        },
+        "pin_cta_copy": "Get all four recipes",
+        "fallback": false,
+        "copy": "Get all four recipes"
+      },
+      "_about": "Page two. Written in session mode from the generator prompt rules. Shape: one dinner per protein source that is already in most family fridges, each with a kid plate and a grown-up plate from the same pan.",
+      "page": {
+        "create": true,
+        "type": "roundup",
+        "slug": "high-protein-dinners-kids-actually-eat",
+        "sectionOrder": "advertorial",
+        "accent": "green",
+        "showPlayStore": false,
+        "category": "Dinner",
+        "title_tag": "High protein dinners kids will actually eat | iEatz Healthy",
+        "meta_description": "Four family dinners with the protein hidden in what kids already like: quesadillas, crispy tenders, lentil pasta and mac and cheese. One pan, two plates.",
+        "schema_description": "Four high protein family dinners kids will actually eat, each with a kid plate and a grown-up plate from the same pan, with full recipes, times and servings.",
+        "og_title": "High protein dinners kids will actually eat",
+        "og_description": "Four dinners with the protein hidden in what kids already like. Kid plate and grown-up plate from one pan, full recipes free.",
+        "og_image": null,
+        "breadcrumb_label": "High protein dinners kids will eat",
+        "h1": "What high protein dinners will my kids actually eat?",
+        "hero": {
+          "eyebrow": "Family dinner · 25 minutes · one pan, two plates",
+          "opener": [
+            "It is 5:45. The chicken you made for the protein is on the plate, untouched, and the noodles next to it are gone. You have already said the thing about one more bite.",
+            "So you make the noodles again tomorrow, because at least they get eaten, and the protein question quietly becomes a Thursday problem, then a next-week problem, then something you stop asking."
+          ],
+          "pain_line": "The protein was never the problem. Where you put it was.",
+          "time_stamp": "5:45 p.m.",
+          "direct_answer": "The dinners that get eaten hide the protein inside something kids already say yes to: cheesy egg and bean quesadillas, crispy yogurt ranch chicken tenders, pasta with a lentil and turkey sauce, and a cottage cheese mac and cheese. Every one of them makes a plain kid plate and a grown-up plate from the same pan, and all four are written out in full below with times, servings and where the protein comes from.",
+          "image": null,
+          "inset_image": {
+            "src": "/assets/photos/fridge-real-mess.jpg",
+            "alt": "A real, crowded fridge shelf",
+            "pin_description": "",
+            "source": "library",
+            "library_id": "fridge-real-mess"
+          }
+        },
+        "bridge": {
+          "headline": "Each of these assumes you already have the pan of things.",
+          "body": "These four are a guess about a kitchen like yours, and *a guess is all a page can make.* iEatz starts from ==what is already on your shelf== tonight, the half tub of yogurt, the eggs, the open bag of cheese, so the dinner it suggests is one you can make without another trip to the store.",
+          "beats": [],
+          "app_screens": [
+            "app-receipt.jpg",
+            "app-chicken.jpg"
+          ],
+          "lifestyle_image": {
+            "src": "/assets/photos/couple-cooking.jpg",
+            "alt": "Two people cooking together at the stove in a home kitchen",
+            "pin_description": "",
+            "source": "library",
+            "library_id": "couple-cooking"
+          },
+          "proof": {
+            "rating_key": "app_store_rating",
+            "review_key": "review_sixsocks",
+            "stat_key": "recipes_per_day"
+          }
+        },
+        "jump_list": true,
+        "list_headline": "Four dinners, one pan each, the protein already inside.",
+        "recipes": [
+          {
+            "anchor": "cheesy-egg-bean-quesadillas",
+            "name": "Cheesy egg and black bean quesadillas",
+            "description": "Scrambled eggs and mashed black beans folded into a cheese quesadilla, cut into triangles for small hands.",
+            "time_minutes": 12,
+            "servings": 2,
+            "protein_g": 24,
+            "primary_protein": "egg",
+            "method": "skillet",
+            "image": null,
+            "alt": "Cheesy egg and black bean quesadilla cut into triangles on a plate",
+            "pin_description": "Cheesy egg and black bean quesadillas: a 12 minute high protein kids dinner with 24g of protein per serving, from eggs, beans and cheese already in the fridge.",
+            "ingredients": [
+              "3 eggs",
+              "1/2 cup canned black beans, drained",
+              "1/2 cup shredded cheddar or Monterey Jack",
+              "2 large flour tortillas",
+              "1 tsp butter or oil",
+              "Pinch of salt",
+              "Grown-up plate: salsa, sliced jalapeno, a handful of spinach"
+            ],
+            "steps": [
+              "Mash the beans in a bowl with a fork until mostly smooth, then beat the eggs in with the salt.",
+              "Melt the butter in a nonstick pan over medium heat and scramble the egg and bean mixture until just set, about 2 minutes. Scrape it out.",
+              "Lay a tortilla in the same pan, cover half with cheese, then the egg mixture, then more cheese, and fold. Cook 2 minutes a side until golden. Repeat with the second tortilla, adding spinach and jalapeno to the grown-up one.",
+              "Cut the kid quesadilla into thin triangles and serve with salsa on the side, not on top."
+            ],
+            "why_it_works": "Beans mashed into eggs disappear; beans sitting next to eggs get picked out. The cheese does the persuading, the eggs and beans do the work."
+          },
+          {
+            "anchor": "yogurt-ranch-chicken-tenders",
+            "name": "Crispy yogurt ranch chicken tenders",
+            "description": "Chicken tenders marinated in Greek yogurt and ranch seasoning, coated in panko and baked until crisp, with the marinade doubling as the dip.",
+            "time_minutes": 25,
+            "servings": 4,
+            "protein_g": 34,
+            "primary_protein": "chicken",
+            "method": "bake",
+            "image": null,
+            "alt": "Crispy baked chicken tenders on a sheet pan with a bowl of yogurt ranch dip",
+            "pin_description": "Crispy yogurt ranch chicken tenders baked in 25 minutes: a high protein kids dinner with 34g of protein per serving and a Greek yogurt dip.",
+            "ingredients": [
+              "1 lb chicken tenders or breast cut into strips",
+              "3/4 cup plain Greek yogurt",
+              "1 tbsp ranch seasoning",
+              "1 cup panko breadcrumbs",
+              "1/4 cup grated parmesan",
+              "1 tbsp olive oil",
+              "Grown-up plate: a bag of salad greens, lemon, extra ranch yogurt as dressing"
+            ],
+            "steps": [
+              "Heat the oven to 425 F and set a rack on a sheet pan. Mix the yogurt and ranch seasoning; keep a third of it aside for the dip.",
+              "Coat the chicken in the rest of the yogurt. Mix the panko, parmesan and oil on a plate and press each strip into it.",
+              "Bake on the rack 15 to 18 minutes until the coating is golden and the chicken is cooked through.",
+              "Kid plate: tenders and the reserved dip. Grown-up plate: slice two tenders over the greens and thin the dip with lemon juice for the dressing."
+            ],
+            "why_it_works": "The yogurt keeps the chicken tender so it does not turn into the dry strips kids refuse, and the dip they ask for is the marinade you already made."
+          },
+          {
+            "anchor": "lentil-turkey-pasta-sauce",
+            "name": "Pasta with lentil and turkey sauce",
+            "description": "A weeknight meat sauce stretched with red lentils that cook down into the tomato, over any pasta shape.",
+            "time_minutes": 25,
+            "servings": 4,
+            "protein_g": 29,
+            "primary_protein": "turkey",
+            "method": "simmer",
+            "image": null,
+            "alt": "A bowl of pasta with a thick tomato, turkey and red lentil sauce",
+            "pin_description": "Pasta with a hidden lentil and turkey sauce: a 25 minute high protein family dinner with 29g of protein per serving that picky kids eat as plain pasta.",
+            "ingredients": [
+              "1/2 lb ground turkey or beef",
+              "1/2 cup red lentils, rinsed",
+              "1 jar (24 oz) marinara or crushed tomatoes",
+              "1 cup water",
+              "1 tbsp olive oil",
+              "1/2 tsp garlic powder",
+              "12 oz pasta, any shape the kids will eat",
+              "Grown-up plate: chili flakes, grated parmesan, torn basil"
+            ],
+            "steps": [
+              "Start the pasta water. Brown the turkey in the oil in a wide pan over medium high heat, breaking it up small.",
+              "Add the lentils, marinara, water and garlic powder. Simmer uncovered 15 minutes, stirring now and then, until the lentils are soft and the sauce is thick. Cook the pasta meanwhile.",
+              "Toss the drained pasta with the sauce. Kid bowl: as is, cheese on top if that helps. Grown-up bowl: chili flakes, parmesan and basil."
+            ],
+            "why_it_works": "Red lentils lose their shape in tomato sauce, so the texture is just a thick meat sauce while the protein per bowl goes up and the meat you need goes down."
+          },
+          {
+            "anchor": "cottage-cheese-mac",
+            "name": "Stovetop cottage cheese mac and cheese",
+            "description": "Mac and cheese with cottage cheese blended into the sauce for a creamier, higher protein version of the box.",
+            "time_minutes": 20,
+            "servings": 4,
+            "protein_g": 22,
+            "primary_protein": "cottage cheese",
+            "method": "stovetop",
+            "image": null,
+            "alt": "A pot of creamy stovetop mac and cheese with a spoon",
+            "pin_description": "Stovetop cottage cheese mac and cheese: a 20 minute higher protein mac and cheese for kids with 22g of protein per serving, no box needed.",
+            "ingredients": [
+              "12 oz elbow macaroni",
+              "1 cup cottage cheese",
+              "1/2 cup milk",
+              "1 1/2 cups shredded sharp cheddar",
+              "1 tbsp butter",
+              "1/2 tsp salt",
+              "Grown-up plate: frozen peas, hot sauce, roasted broccoli if there is any"
+            ],
+            "steps": [
+              "Cook the macaroni in salted water until just tender and drain, keeping a cup of the pasta water.",
+              "Blend the cottage cheese and milk until completely smooth. This step is the whole trick: unblended cottage cheese is the thing kids notice.",
+              "Return the pasta to the pot over low heat with the butter, pour in the cottage cheese mixture and the cheddar, and stir until glossy, loosening with pasta water as needed. Salt to taste.",
+              "Kid bowl: as is. Grown-up bowl: stir in a handful of peas for the last minute, then hot sauce or broccoli on top."
+            ],
+            "why_it_works": "Blended cottage cheese tastes like a creamier cheese sauce, not like cottage cheese, and it carries most of the protein in the bowl."
+          }
+        ],
+        "interstitials": [
+          {
+            "style": "photo_band",
+            "line": "Three things you already have. That is the whole input.",
+            "image": {
+              "src": "/assets/photos/cooking-window.jpg",
+              "alt": "Scrambled eggs with tomato in a pan beside a bright kitchen window",
+              "pin_description": "",
+              "source": "library",
+              "library_id": "cooking-window"
+            }
+          },
+          {
+            "style": "dark_strip",
+            "line": "Same plate refused tomorrow at 5:45?"
+          }
+        ],
+        "cta_cadence": [
+          "header",
+          "bridge",
+          "photo_break",
+          "mid_strip",
+          "footer",
+          "sticky"
+        ],
+        "supporting_sections": [
+          {
+            "type": "substitutions",
+            "eyebrow": "The swaps",
+            "heading": "When the protein on the list is the one they refuse",
+            "body": [
+              "Every dinner above has a protein doing most of the work and a second one backing it up, so a refusal does not sink the plate. Swap by texture, not by label: a kid who rejects beans is usually rejecting the skins, so mash them smoother or swap in another egg. A kid who rejects chicken is usually rejecting dry chicken, which the yogurt fixes first."
+            ],
+            "rows": [
+              {
+                "label": "No beans",
+                "value": "egg",
+                "note": "One more egg in the quesadilla, no beans; the cheese covers the gap"
+              },
+              {
+                "label": "No turkey",
+                "value": "lentils",
+                "note": "Double the red lentils in the pasta sauce and drop the meat entirely"
+              },
+              {
+                "label": "No cottage cheese",
+                "value": "yogurt",
+                "note": "Blend plain Greek yogurt with the milk instead; sharper, still creamy"
+              },
+              {
+                "label": "No panko",
+                "value": "crackers",
+                "note": "Crushed plain crackers or cornflakes coat the tenders the same way"
+              }
+            ],
+            "footnote": "Protein figures on this page are estimates per serving, rounded, and will move with the brands and swaps you use.",
+            "images": []
+          },
+          {
+            "type": "common_mistakes",
+            "eyebrow": "Why the plate comes back",
+            "heading": "The three reasons a good dinner still gets refused",
+            "body": [
+              "Visible bits. Anything a kid can identify and separate, they will. The quesadilla works because the beans are mashed into the egg; the sauce works because the lentils dissolve. If you can see the protein, so can they.",
+              "Temperature and timing. Tenders that sit while you plate the grown-up salad go from crisp to leathery. Plate the kid version first, straight from the pan.",
+              "Serving the new thing alone. Put the new dinner next to one thing they always eat, even if it is a pile of cucumber. A plate with one safe item on it gets tried; a plate that is all new gets pushed away."
+            ],
+            "rows": null,
+            "footnote": null,
+            "images": []
+          }
+        ],
+        "faq": [
+          {
+            "q": "What are good high protein foods for picky kids?",
+            "a": "Start with what they already eat and add the protein inside it: eggs into quesadillas, blended cottage cheese or Greek yogurt into cheese sauces, red lentils into tomato sauce, and yogurt on chicken so it stays tender. The recipes above are built on exactly those moves."
+          },
+          {
+            "q": "How do I add protein to mac and cheese without kids noticing?",
+            "a": "Blend cottage cheese completely smooth with a splash of milk before it goes near the pot. Once it is smooth it reads as a creamier cheese sauce; unblended, the curds are the first thing a kid finds. Stir in shredded cheddar for the flavor they expect."
+          },
+          {
+            "q": "Can I make these dinners ahead for the week?",
+            "a": "The lentil and turkey sauce keeps well and is better the next day. The tenders can be coated and refrigerated on the rack a few hours ahead, then baked when you get home. The quesadillas and the mac and cheese are best made fresh, and both take under twenty minutes."
+          }
+        ],
+        "internal_links": [
+          {
+            "title": "10-minute high-protein breakfasts for busy mornings",
+            "url": "https://ieatzhealthy.com/recipes/10-minute-breakfasts-busy-mornings/",
+            "meta": "5 recipes · the morning version of this problem"
+          },
+          {
+            "title": "All recipes",
+            "url": "https://ieatzhealthy.com/recipes/",
+            "meta": "Every page, complete and free"
+          }
+        ],
+        "final_cta": {
+          "headline": "Tomorrow's dinner is already in the fridge. So is the protein.",
+          "image": {
+            "src": "/assets/photos/fridge-organized.jpg",
+            "alt": "An open fridge with stocked, organized shelves",
+            "pin_description": "",
+            "source": "library",
+            "library_id": "fridge-organized"
+          }
+        },
+        "provenance_line": "Recipes on this page are developed with the iEatz recipe engine. Times, servings and protein figures are estimates checked against the written method."
+      },
+      "pinterest": {
+        "url": "https://ieatzhealthy.com/recipes/high-protein-dinners-kids-actually-eat/?utm_source=pinterest&utm_medium=organic&utm_campaign=persona-spotlight&utm_content=high-protein-dinners-kids"
+      },
+      "text": "Get all four recipes."
+    }
+  ],
+  "pages_meta": {
+    "lastArm": "lp"
+  }
+}

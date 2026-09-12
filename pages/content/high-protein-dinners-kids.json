@@ -23,7 +23,7 @@
     "lentils"
   ],
   "dueAt": "2026-09-22T16:35:00-07:00",
-  "status": "pending",
+  "status": "scheduled",
   "page_status": {
     "eligibility": {
       "score": 75,
@@ -38,16 +38,16 @@
       ],
       "hard_exclude": null
     },
-    "state": "deployed",
+    "state": "live",
     "url": "https://ieatzhealthy.com/recipes/high-protein-dinners-kids-actually-eat/",
-    "live_verified_at": "",
+    "live_verified_at": "2026-09-12T15:36:38.971Z",
     "failure": null,
     "fallback_used": false,
     "utility_check": {
       "passed": true,
       "note": "Four complete recipes with a kid plate and a grown-up plate each, plus swaps and the reasons plates get refused, solve the dinner whether or not the reader ever opens the app."
     },
-    "attempts": 2,
+    "attempts": 3,
     "images": {
       "slots": {
         "hero": "none",
@@ -81,19 +81,22 @@
       "note": "run process was killed during verify-live (blocked network hung); deploy had completed"
     },
     "live_verification": {
-      "status": "pending",
-      "last_check": "2026-09-12T05:38Z",
-      "result": "URL serves the homepage with 200 (Cloudflare fallback); commit a58acd8 not deployed yet",
+      "status": "verified",
+      "last_check": "2026-09-12T15:33:11Z",
+      "result": "LIVE after 1 attempt on the custom domain; Cloudflare Pages production branch had been claude/brave-faraday-o5q71u, switched to main by run 34702531889 at 15:32Z",
       "action_runs": [
         34674319147,
-        34675222284
+        34675222284,
+        34702565073
       ]
-    }
+    },
+    "live_verified_via": "external",
+    "live_evidence": "verify-recipes Action run 34702565073 LIVE in 1 attempt (production branch switched to main at 15:32Z)"
   },
   "cta": {
     "arm": "lp",
     "destination": "page",
-    "url": "",
+    "url": "https://ieatzhealthy.com/recipes/high-protein-dinners-kids-actually-eat/?utm_source=pinterest&utm_medium=organic&utm_campaign=persona-spotlight&utm_content=high-protein-dinners-kids",
     "campaign_token": "pin-lp",
     "utm": {
       "utm_source": "pinterest",
@@ -101,7 +104,8 @@
       "utm_campaign": "persona-spotlight",
       "utm_content": "high-protein-dinners-kids"
     },
-    "pin_cta_copy": ""
+    "pin_cta_copy": "Full recipes on the site",
+    "fallback": false
   },
   "_about": "Page two. Written in session mode from the generator prompt rules. Shape: one dinner per protein source that is already in most family fridges, each with a kid plate and a grown-up plate from the same pan.",
   "page": {
@@ -121,7 +125,7 @@
     "breadcrumb_label": "High protein dinners kids will eat",
     "h1": "What high protein dinners will my kids actually eat?",
     "hero": {
-      "eyebrow": "Family dinner \u00b7 25 minutes \u00b7 one pan, two plates",
+      "eyebrow": "Family dinner · 25 minutes · one pan, two plates",
       "opener": [
         "It is 5:45. The chicken you made for the protein is on the plate, untouched, and the noodles next to it are gone. You have already said the thing about one more bite.",
         "So you make the noodles again tomorrow, because at least they get eaten, and the protein question quietly becomes a Thursday problem, then a next-week problem, then something you stop asking."
@@ -369,7 +373,7 @@
       {
         "title": "10-minute high-protein breakfasts for busy mornings",
         "url": "https://ieatzhealthy.com/recipes/10-minute-breakfasts-busy-mornings/",
-        "meta": "5 recipes \u00b7 the morning version of this problem"
+        "meta": "5 recipes · the morning version of this problem"
       },
       {
         "title": "All recipes",
@@ -388,5 +392,27 @@
       }
     },
     "provenance_line": "Recipes on this page are developed with the iEatz recipe engine. Times, servings and protein figures are estimates checked against the written method."
+  },
+  "pin": {
+    "buffer_post_id": "6aa57a9d9a7f0553d16da5d7",
+    "status": "scheduled",
+    "channel_id": "6a7a4b64b2d9d577435279f6",
+    "board": "School lunch and family dinner ideas",
+    "board_service_id": "1011339728762228742",
+    "dueAt": "2026-09-22T16:35:00-07:00",
+    "image": "https://raw.githubusercontent.com/travi-trav3/ieatz-social/962df5071642cfe1c3b769a68ecc89be6a7853eb/posts/pages/high-protein-dinners-kids.png",
+    "image_http": 200,
+    "destination": "https://ieatzhealthy.com/recipes/high-protein-dinners-kids-actually-eat/?utm_source=pinterest&utm_medium=organic&utm_campaign=persona-spotlight&utm_content=high-protein-dinners-kids",
+    "cta_copy": "Full recipes on the site",
+    "title": "4 high protein dinners kids will actually eat",
+    "text": "Four high protein dinners picky kids actually eat: cheesy egg and black bean quesadillas, crispy yogurt ranch chicken tenders, pasta with lentil and turkey sauce, and stovetop cottage cheese mac and cheese. One pan, a kid plate and a grown-up plate, 25 minutes or less. Full recipes on the site.",
+    "slack_alert": {
+      "scheduled_message_id": "Dr0C1G9S3CTB",
+      "channel": "C08U1PJ03U7",
+      "post_at": 1790120100,
+      "post_time": "2026-09-22T16:35:00-07:00"
+    },
+    "rule": "scheduled only after page_status.state is live (verified by the website repo Action); Slack alert in #all-ieatz-healthy (C08U1PJ03U7) at dueAt",
+    "scheduled_at": "2026-09-12"
   }
 }

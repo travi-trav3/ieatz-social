@@ -100,14 +100,38 @@ async function generated(slot, page, config, websiteRepo, report) {
   return { src: `/${config.site.website_repo.recipe_photos_dir}/${page.slug}/${file}`, alt: r.alt, pin_description: r.pin_description, source: 'generated', cost_usd: g.costPerImageUsd || 0 };
 }
 
+// A slot that already carries an image whose file still exists keeps it. Used
+// on republish so a live page never loses a photo because another page used
+// the same file since (the reuse rule is for new picks, not for a page's own
+// earlier pick). The page's original use record is put back with its date.
+function keepCurrent(slot, page, library, websiteRepo, prior) {
+  const cur = slot.get();
+  if (!cur || !cur.src || cur.source === 'generated') return null;
+  if (!fs.existsSync(path.join(websiteRepo, cur.src.replace(/^\//, '')))) return null;
+  if (cur.library_id) {
+    const p = library.photos.find((x) => x.id === cur.library_id);
+    if (p) {
+      p.used = p.used || [];
+      if (!p.used.some((u) => u.page === page.slug && u.slot === slot.key)) p.used.push(prior.get(`${p.id}:${slot.key}`) || { page: page.slug, slot: slot.key, date: new Date().toISOString().slice(0, 10) });
+    }
+  }
+  return cur;
+}
+
 async function sourceImages(obj, ctx) {
-  const { config, library, websiteRepo } = ctx;
+  const { config, library, websiteRepo, keepExisting } = ctx;
   const page = obj.page;
   const report = { slots: {}, cost_usd: 0, notes: [], needs_photography: [] };
-  // Re-sourcing is a full redo: forget this page's own earlier picks first.
-  for (const p of library.photos) p.used = (p.used || []).filter((u) => u.page !== page.slug);
+  // Re-sourcing is a full redo: forget this page's own earlier picks first
+  // (remembering them so kept slots get their original record back).
+  const prior = new Map();
+  for (const p of library.photos) {
+    for (const u of p.used || []) if (u.page === page.slug) prior.set(`${p.id}:${u.slot}`, u);
+    p.used = (p.used || []).filter((u) => u.page !== page.slug);
+  }
   for (const slot of slotList(page, obj.tags)) {
     let img = manualOverride(slot, page, config, websiteRepo);
+    if (!img && keepExisting) img = keepCurrent(slot, page, library, websiteRepo, prior);
     if (!img) img = fromLibrary(slot, page, config, library);
     if (!img) img = await generated(slot, page, config, websiteRepo, report);
     if (img) { slot.set(img); report.slots[slot.key] = img.source; }

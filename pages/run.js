@@ -28,7 +28,7 @@ const { verifyLive } = require('./lib/verify-live');
 function args() {
   const a = process.argv.slice(2);
   const get = (k) => { const i = a.indexOf(k); return i === -1 ? null : a[i + 1]; };
-  return { batch: get('--batch'), ledger: get('--ledger'), concepts: get('--concepts'), dryRun: a.includes('--dry-run'), only: get('--only'), runId: get('--run-id') || U.runId(), assumeLive: get('--assume-live'), evidence: get('--evidence'), republish: get('--republish') };
+  return { batch: get('--batch'), ledger: get('--ledger'), concepts: get('--concepts'), dryRun: a.includes('--dry-run'), only: get('--only'), runId: get('--run-id') || U.runId(), assumeLive: get('--assume-live'), evidence: get('--evidence'), republish: get('--republish'), reimage: a.includes('--reimage') };
 }
 
 // --republish <id>: re-render a page that is already live from its content
@@ -39,7 +39,9 @@ async function republish(id, ctx, opt) {
   const file = generator.contentPath(id);
   if (!fs.existsSync(file)) throw new Error(`no content file for ${id}`);
   const obj = U.readJson(file);
-  await images.sourceImages(obj, { config, library: ctx.library, websiteRepo: site.website_repo });
+  // Existing photos stay unless --reimage asks for a full re-pick; a manual
+  // photo dropped into the website repo still wins either way.
+  await images.sourceImages(obj, { config, library: ctx.library, websiteRepo: site.website_repo, keepExisting: !opt.reimage });
   const html = renderPage.render(obj, site, facts);
   const vh = validateHtml(html, { obj, config, facts, site, willExist: new Set([config.site.recipes_path]) });
   if (!vh.ok) throw new Error(`html validation: ${vh.errors.join(' | ')}`);
@@ -140,6 +142,8 @@ async function main() {
         entry.live = v;
         if (v.ok) { ps.state = 'live'; ps.live_verified_at = v.verified_at; linkGraph.addToCorpus(corpus, obj, config, { state: 'live', deployed_at: (corpus.pages.find((p) => p.slug === obj.page.slug) || {}).deployed_at || U.nowIso(), live_verified_at: v.verified_at }); U.saveCorpus(corpus); entry.state = 'live'; }
         else { ps.failure = v.unreachable ? null : v.reason; entry.state = 'deployed-unverified'; report.needsTravis.push(`${id}: deployed but not verified (${v.reason}). ${v.unreachable ? 'Use --assume-live with the Action run as evidence.' : 'If the PR is open, merge it and rerun.'}`); }
+        // The content file is the page's record: the state change lands there too.
+        if (fs.existsSync(generator.contentPath(id))) U.writeJson(generator.contentPath(id), obj);
         continue;
       }
       // 2c. Images.
@@ -205,6 +209,7 @@ async function main() {
       if (v.ok) { ps.state = 'live'; ps.live_verified_at = v.verified_at; linkGraph.addToCorpus(corpus, obj, config, { state: 'live', commit: d.commit, live_verified_at: v.verified_at }); U.saveCorpus(corpus); entry.state = 'live'; }
       else if (v.unreachable) { ps.state = 'deployed'; ps.failure = null; entry.state = 'deployed (verification pending: ' + v.reason + ')'; report.needsTravis.push(`${id}: deployed at ${ps.url} but this environment cannot reach the domain. The website repo's verify-recipes Action verifies on push; rerun with --assume-live ${id} --evidence "<Action run>" to mark it live and wire the pin.`); }
       else { ps.state = 'failed'; ps.failure = v.reason; entry.state = 'failed'; entry.fallback_used = true; }
+      U.writeJson(generator.contentPath(id), obj);
     } catch (e) {
       ps.state = 'failed';
       ps.failure = e.message;

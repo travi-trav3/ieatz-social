@@ -96,7 +96,7 @@
   },
   "cta": {
     "pageCtaCopy": [
-      "Get all five recipes",
+      "Get all {count} recipes",
       "Full recipes on the site",
       "See the whole list",
       "Recipes and swaps inside"

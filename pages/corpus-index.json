@@ -48,10 +48,9 @@
         "lentils"
       ],
       "recipe_count": 4,
-      "state": "deployed",
+      "state": "live",
       "deployed_at": "2026-09-12T04:56:53.124Z",
-      "commit": "a58acd8f038c10753f8de357a8f97263ab876a2a",
-      "pr": null
+      "live_verified_at": "2026-09-12T15:36:38.971Z"
     }
   ],
   "recipes": [
