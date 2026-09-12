@@ -24,3 +24,14 @@ Started 2026-09-12T04:55Z. Concept high-protein-dinners-kids from fixtures/page-
 ## 05:38Z: deploy not live
 
 Dispatched verify run 34675222284 for both pages: page one LIVE in 1 attempt; page two served `<title>iEatz Healthy | Fridge to Table: AI Recipes</title>` (the homepage, 116754 bytes, server=cloudflare) with HTTP 200 for 20 minutes. Conclusion: Cloudflare Pages has not deployed a58acd8 (or 552b5e5) 40 minutes after the push. Page one's merge on 2026-09-09 did deploy. Cannot inspect Cloudflare from this session (connector not authorized). Page stays `deployed`; pin stays unscheduled; a check-in re-dispatches the verifier.
+
+## 05:48Z: root cause found, production is stale
+
+The Cloudflare connector Travis authorized has no Pages tools (D1, KV, R2, Hyperdrive, Workers only), and the sandbox cannot reach any pages.dev host, so the diagnosis came from GitHub check runs plus a new `probe_urls` diagnostic input on the verify-recipes Action (website commits 2b289a6, a16033e; probe runs 34676451868, 34676511891).
+
+- Cloudflare Pages project `ieatz` (account 5ad6af2a...) built every push to main successfully within 20 seconds: 4dd1988 (page one merge, 2026-09-09), a58acd8, 552b5e5. So the pipeline's "push to main" leg does trigger builds.
+- `main.ieatz.pages.dev` (branch alias) serves page two correctly and a sitemap with all six URLs, with `x-robots-tag: noindex`.
+- `ieatz.pages.dev` (production) and `ieatzhealthy.com` serve the homepage fallback at page two's URL, a hub linking only page one, and a sitemap whose every lastmod is 2026-09-09. Commit 74a8ea6 (2026-09-12 04:22Z) changed those lastmods to 2026-09-12 and never reached production either.
+- Conclusion: production has been stuck on the page one merge deployment since 2026-09-09. Every push to main since then built as a preview. The repo has no other candidate production branch (only main plus feature branches), so the cause is on the Cloudflare side: the project's production branch setting or its automatic production deployments. Only the dashboard can confirm which (Workers & Pages → ieatz → Deployments shows Production vs Preview per commit; Settings → Builds & deployments shows the production branch and the production-deployments toggle).
+- The verifier did its job: no pin was scheduled against a URL that serves the homepage. `www.ieatzhealthy.com` returns Cloudflare 525 (SSL handshake failed), a separate pre-existing issue; the pages only ever link the apex.
+- Next: once production picks up main (a retry from the dashboard or the next push after the setting is fixed), the 06:42Z check-in re-dispatches verify and finishes assume-live, page one republish, Buffer pin and Slack alert.
