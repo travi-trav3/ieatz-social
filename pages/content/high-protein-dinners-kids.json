@@ -50,7 +50,7 @@
     "attempts": 3,
     "images": {
       "slots": {
-        "hero": "none",
+        "hero": "manual",
         "inset": "library",
         "lifestyle": "library",
         "band": "library",
@@ -67,7 +67,6 @@
       "cost_usd": 0,
       "notes": [],
       "needs_photography": [
-        "hero",
         "recipe-1",
         "recipe-2",
         "recipe-3",
@@ -133,7 +132,12 @@
       "pain_line": "The protein was never the problem. Where you put it was.",
       "time_stamp": "5:45 p.m.",
       "direct_answer": "The dinners that get eaten hide the protein inside something kids already say yes to: cheesy egg and bean quesadillas, crispy yogurt ranch chicken tenders, pasta with a lentil and turkey sauce, and a cottage cheese mac and cheese. Every one of them makes a plain kid plate and a grown-up plate from the same pan, and all four are written out in full below with times, servings and where the protein comes from.",
-      "image": null,
+      "image": {
+        "src": "/assets/photos/recipes/high-protein-dinners-kids-actually-eat/hero.jpg",
+        "alt": "A bowl of pasta on the table at dinner time",
+        "pin_description": "",
+        "source": "manual"
+      },
       "inset_image": {
         "src": "/assets/photos/fridge-real-mess.jpg",
         "alt": "A real, crowded fridge shelf",

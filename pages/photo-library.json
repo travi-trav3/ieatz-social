@@ -44,14 +44,14 @@
       "confirmed": true,
       "used": [
         {
-          "page": "high-protein-dinners-kids-actually-eat",
-          "slot": "band",
-          "date": "2026-09-12"
-        },
-        {
           "page": "10-minute-breakfasts-busy-mornings",
           "slot": "hero",
           "date": "2026-09-09"
+        },
+        {
+          "page": "high-protein-dinners-kids-actually-eat",
+          "slot": "band",
+          "date": "2026-09-12"
         }
       ],
       "alt": "Scrambled eggs with tomato in a pan beside a bright kitchen window",
@@ -73,14 +73,14 @@
       "confirmed": true,
       "used": [
         {
-          "page": "high-protein-dinners-kids-actually-eat",
-          "slot": "lifestyle",
-          "date": "2026-09-12"
-        },
-        {
           "page": "10-minute-breakfasts-busy-mornings",
           "slot": "lifestyle",
           "date": "2026-09-09"
+        },
+        {
+          "page": "high-protein-dinners-kids-actually-eat",
+          "slot": "lifestyle",
+          "date": "2026-09-12"
         }
       ],
       "alt": "Two people cooking together at the stove in a home kitchen"
@@ -120,14 +120,14 @@
       "confirmed": true,
       "used": [
         {
-          "page": "high-protein-dinners-kids-actually-eat",
-          "slot": "final",
-          "date": "2026-09-12"
-        },
-        {
           "page": "10-minute-breakfasts-busy-mornings",
           "slot": "final",
           "date": "2026-09-09"
+        },
+        {
+          "page": "high-protein-dinners-kids-actually-eat",
+          "slot": "final",
+          "date": "2026-09-12"
         }
       ],
       "alt": "An open fridge with stocked, organized shelves"
@@ -150,14 +150,14 @@
       "confirmed": true,
       "used": [
         {
-          "page": "high-protein-dinners-kids-actually-eat",
-          "slot": "inset",
-          "date": "2026-09-12"
-        },
-        {
           "page": "10-minute-breakfasts-busy-mornings",
           "slot": "inset",
           "date": "2026-09-09"
+        },
+        {
+          "page": "high-protein-dinners-kids-actually-eat",
+          "slot": "inset",
+          "date": "2026-09-12"
         }
       ],
       "alt": "A real, crowded fridge shelf"
