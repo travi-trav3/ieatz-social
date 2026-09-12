@@ -79,6 +79,15 @@
       "commit": "a58acd8",
       "run": "run-005-page-two",
       "note": "run process was killed during verify-live (blocked network hung); deploy had completed"
+    },
+    "live_verification": {
+      "status": "pending",
+      "last_check": "2026-09-12T05:38Z",
+      "result": "URL serves the homepage with 200 (Cloudflare fallback); commit a58acd8 not deployed yet",
+      "action_runs": [
+        34674319147,
+        34675222284
+      ]
     }
   },
   "cta": {
