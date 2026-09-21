@@ -19,6 +19,20 @@
       "sitemap": "sitemap.xml"
     }
   },
+  "slack": {
+    "_about": "Team engagement alerts. One alert per pin, scheduled at the pin's dueAt, in this channel and no other. #all-ieatz-healthy (C08U1PJ03U7) is the company-wide channel and is the wrong place; alerts landed there through 2026-09-21 and were moved.",
+    "channel": "#social",
+    "channel_id": "C0BATGA438T",
+    "message": {
+      "template": "Pinterest · just published: \"{title}\"\n[Find the pin on the board]({board_url}) · [Page it links to]({page_url})\nLike, comment, save. The first 30 minutes matter most.",
+      "rules": [
+        "Every URL is a markdown link [label](url). Never a bare URL: the Slack connector autolinks bare URLs and swallows the line break after them, so the next word becomes part of the link and the link breaks (seen 2026-09-18).",
+        "Links go on one line, separated by ' · ', so nothing follows a URL on its line.",
+        "{page_url} is the clean page URL without UTM parameters: the team's own clicks must not count as Pinterest traffic.",
+        "{board_url} is the board URL while the pin is scheduled; once Buffer reports the pin sent, prefer its externalLink (the pin permalink) if the alert is being (re)scheduled after that point."
+      ]
+    }
+  },
   "pages": {
     "weeklyCap": 3,
     "requireReview": false,

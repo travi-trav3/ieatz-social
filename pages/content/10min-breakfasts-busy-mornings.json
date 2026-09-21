@@ -413,9 +413,11 @@
       "scheduled_message_id": "Dr0C0PCQ9Y94",
       "channel": "C08U1PJ03U7",
       "post_at": 1789742400,
-      "post_time": "2026-09-18T07:40:00-07:00"
+      "post_time": "2026-09-18T07:40:00-07:00",
+      "channel_name": "#all-ieatz-healthy",
+      "note": "Sent 2026-09-18 to the wrong channel (should have been #social C0BATGA438T) with bare URLs that rendered unclickable. Not re-sent: a 3-day-late alert is noise. Config and runbook fixed 2026-09-21."
     },
-    "rule": "stays a draft until page_status.state is live; then edit_post saveToDraft:false and schedule the Slack alert in #all-ieatz-healthy (C08U1PJ03U7) at dueAt",
+    "rule": "stays a draft until page_status.state is live; then edit_post saveToDraft:false and schedule the Slack alert in #social (config.slack.channel_id) at dueAt, links as markdown links per config.slack.message",
     "scheduled_at": "2026-09-09"
   }
 }

@@ -411,12 +411,18 @@
     "title": "4 high protein dinners kids will actually eat",
     "text": "Four high protein dinners picky kids actually eat: cheesy egg and black bean quesadillas, crispy yogurt ranch chicken tenders, pasta with lentil and turkey sauce, and stovetop cottage cheese mac and cheese. One pan, a kid plate and a grown-up plate, 25 minutes or less. Full recipes on the site.",
     "slack_alert": {
-      "scheduled_message_id": "Dr0C1G9S3CTB",
-      "channel": "C08U1PJ03U7",
+      "scheduled_message_id": "Dr0C2X3GPVQF",
+      "channel": "C0BATGA438T",
       "post_at": 1790120100,
-      "post_time": "2026-09-22T16:35:00-07:00"
+      "post_time": "2026-09-22T16:35:00-07:00",
+      "channel_name": "#social",
+      "superseded": {
+        "scheduled_message_id": "Dr0C1G9S3CTB",
+        "channel": "C08U1PJ03U7",
+        "note": "Scheduled in #all-ieatz-healthy by mistake with bare URLs; replaced 2026-09-21. Travis deletes it by hand in Slack (Drafts & sent > Scheduled)."
+      }
     },
-    "rule": "scheduled only after page_status.state is live (verified by the website repo Action); Slack alert in #all-ieatz-healthy (C08U1PJ03U7) at dueAt",
+    "rule": "scheduled only after page_status.state is live (verified by the website repo Action); Slack alert in #social (config.slack.channel_id) at dueAt, links as markdown links per config.slack.message",
     "scheduled_at": "2026-09-12"
   }
 }

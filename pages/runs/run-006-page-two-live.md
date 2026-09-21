@@ -32,7 +32,7 @@ Cloudflare Pages had been building every push to main as a preview. The project'
 - Page two marked live from that evidence (this run) and persisted to `content/high-protein-dinners-kids.json`.
 - Page one republished with the related card pointing at page two: first as d9b1cc2, which was wrong (see below), then as 32b044d.
 - Pin scheduled in Buffer: post 6aa57a9d9a7f0553d16da5d7, Pinterest ieatzhealthy, board "School lunch and family dinner ideas", 2026-09-22T16:35:00-07:00, destination the page URL with `utm_campaign=persona-spotlight&utm_content=high-protein-dinners-kids`, image the PNG hosted at commit 962df50 (HTTP 200, 1.78 MB), title "4 high protein dinners kids will actually eat". Description names all four dinners and ends with the rotated CTA "Full recipes on the site."
-- Slack alert scheduled in #all-ieatz-healthy: Dr0C1G9S3CTB at 1790120100 (the pin's dueAt).
+- Slack alert scheduled in #all-ieatz-healthy: Dr0C1G9S3CTB at 1790120100 (the pin's dueAt). **Corrected 2026-09-21:** wrong channel. Replacement Dr0C2X3GPVQF scheduled in #social (C0BATGA438T) at the same time with markdown links; the original must be deleted by hand in Slack. Channel and message format now live in `config.slack`.
 
 ## Two pipeline bugs found and fixed on the way
 
