@@ -9,6 +9,7 @@ const path = require('path');
 const Ajv = require('ajv/dist/2020');
 const addFormats = require('ajv-formats');
 const U = require('./util');
+const { execFileSync } = require('child_process');
 
 const schema = U.readJson(path.join(U.PAGES_DIR, 'schema/page.schema.json'));
 const ajv = new Ajv({ allErrors: true, strict: false });
@@ -239,6 +240,35 @@ function hostsIn(html) {
   return [...hosts];
 }
 
+
+// A link that is not in the website repo's working tree may still be live:
+// the checkout can sit on any branch (a feature branch cut before a later
+// page was published, for instance), while pages ship from the production
+// branch. So a miss on disk is checked against that branch's tree as git
+// last saw it (origin/<production_branch>, then the local branch), with no
+// network needed. A repo with no git history at all resolves nothing here.
+const productionTreeCache = new Map();
+function inProductionBranch(repo, config, p) {
+  const prod = config.site.website_repo.production_branch;
+  const key = `${repo}\0${prod}`;
+  if (!productionTreeCache.has(key)) {
+    let files = null;
+    for (const ref of [`origin/${prod}`, prod]) {
+      try {
+        const out = execFileSync('git', ['ls-tree', '-r', '--name-only', ref], { cwd: repo, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+        files = new Set(out.split('\n').filter(Boolean));
+        break;
+      } catch (e) { /* ref missing or not a git repo: try the next */ }
+    }
+    productionTreeCache.set(key, files);
+  }
+  const files = productionTreeCache.get(key);
+  if (!files) return false;
+  const rel = p.replace(/^\/+/, '');
+  const candidates = [rel, rel.replace(/\/?$/, '/index.html'), `${rel}.html`];
+  return candidates.some((c) => files.has(c));
+}
+
 function validateHtml(html, ctx) {
   const { obj, config, facts, site, willExist = new Set() } = ctx;
   const errors = [];
@@ -296,9 +326,8 @@ function validateHtml(html, ctx) {
     const abs = path.join(repo, p);
     if (fs.existsSync(abs) && fs.statSync(abs).isFile()) return true;
     if (fs.existsSync(path.join(abs, 'index.html'))) return true;
-    if (p.endsWith('/') && fs.existsSync(path.join(abs, 'index.html'))) return true;
     if (fs.existsSync(abs + '.html')) return true;
-    return false;
+    return inProductionBranch(repo, config, p);
   };
   for (const m of html.matchAll(/<a [^>]*href="([^"]+)"/g)) {
     const p = local(m[1]);
