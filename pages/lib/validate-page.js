@@ -233,9 +233,15 @@ function validateObject(obj, ctx) {
 function hostsIn(html) {
   const hosts = new Set();
   for (const m of html.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)) hosts.add(new URL(m[1]).hostname);
+  // Inline scripts: only URLs that load code count (a .js file, or the
+  // gtag loader). A store or page URL a script navigates to is not a host
+  // the page executes code from.
   for (const m of html.matchAll(/<script(?![^>]*\ssrc=)[^>]*>([\s\S]*?)<\/script>/g)) {
     if (/application\/ld\+json/.test(m[0])) continue;
-    for (const u of m[1].matchAll(/https?:\/\/([a-z0-9.-]+)/gi)) hosts.add(u[1].toLowerCase());
+    for (const u of m[1].matchAll(/https?:\/\/([a-z0-9.-]+)(\/[^\s"'`)]*)?/gi)) {
+      const p = u[2] || '';
+      if (/\.js(\?|$)/i.test(p) || /\/gtag\/js/.test(p)) hosts.add(u[1].toLowerCase());
+    }
   }
   return [...hosts];
 }

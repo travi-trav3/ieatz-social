@@ -40,7 +40,7 @@ const broken = {
   'invented stat': (o) => { o.page.bridge.body = o.page.bridge.body.replace('All five are good.', '90% of people say all five are good.'); },
   'missing direct answer recipe': (o) => { o.page.hero.direct_answer = 'In ten minutes you can make whipped cottage cheese toast or savory oats with a jammy egg, and that is honestly all you need. Both are written out in full further down with times and servings.'; },
   'unknown proof key': (o) => { o.page.bridge.proof.stat_key = 'users_million'; },
-  'play store while null': (o) => { o.page.showPlayStore = true; },
+  'play store while null': { mutate: (o) => { o.page.showPlayStore = true; }, ctx: () => Object.assign({}, ctx, { facts: Object.assign({}, facts, { store_urls: Object.assign({}, facts.store_urls, { play_store: null }) }) }) },
   'diet claim while unsupported': (o) => { o.page.h1 = 'What keto breakfast can I make in 10 minutes?'; },
   'title case headline': (o) => { o.page.list_headline = 'Five Fast Breakfasts For Busy Mornings In Full'; },
   'unshipped feature': (o) => { o.page.faq[0].a += ' The weekly planner sorts it all.'; },
@@ -49,10 +49,11 @@ const broken = {
   'wrong internal links at bootstrap': (o) => { o.page.internal_links = [{ title: 'x', url: 'https://ieatzhealthy.com/recipes/nope/' }]; },
   'schema: too few recipes': (o) => { o.page.recipes = o.page.recipes.slice(0, 2); },
 };
-for (const [name, mutate] of Object.entries(broken)) {
+for (const [name, spec] of Object.entries(broken)) {
   const o = clone(pageOne);
+  const mutate = typeof spec === 'function' ? spec : spec.mutate;
   mutate(o);
-  const v = validateObject(o, ctx);
+  const v = validateObject(o, typeof spec === 'function' ? ctx : spec.ctx());
   check(`broken copy fails: ${name}`, !v.ok, v.errors[0]);
 }
 
