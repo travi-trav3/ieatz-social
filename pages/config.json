@@ -139,7 +139,8 @@
       "fonts.gstatic.com",
       "connect.facebook.net",
       "s.pinimg.com",
-      "www.googletagmanager.com"
+      "www.googletagmanager.com",
+      "onelinksmartscript.appsflyer.com"
     ],
     "factsWarnDays": 90,
     "factsFailDays": 180
