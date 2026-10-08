@@ -2,8 +2,11 @@
 // Attribution + measurement, carried over from the v0.3 example. Same event
 // names and CTA positions: app_store_click {cta_position, platform},
 // scroll_depth {depth}, item_anchor_click {item_name}. UTM params on the URL
-// ride along on every event and go to GA4 only. Apple ignores UTMs; the
-// store links carry pt/ct/mt instead.
+// ride along on every event and go to GA4 only. Store attribution is not
+// done here: the website's shared tag block (copied in at render time)
+// loads the AppsFlyer Smart Script, which points every a[data-store] link at
+// the OneLink carrying the visitor's UTMs. The store hrefs below are the
+// fallback for when that script is blocked or returns null.
 function render(page) {
   const firstAnchor = page.recipes[0] ? page.recipes[0].anchor : '';
   const slug = JSON.stringify(page.slug);
